@@ -26,11 +26,11 @@ export default function CardActionbar({handleCardDelete,handleCardLike,cardId}) 
         <IconButton>
           <CallIcon />
         </IconButton>
-        <IconButton >
-          <FavoriteIcon onClick={()=>{
+        <IconButton onClick={()=>{
           handleCardLike(cardId)
-        }}/>
-        </IconButton>
+        }}>
+          <FavoriteIcon />
+        </IconButton >
       </Box>
     </CardActions>
 

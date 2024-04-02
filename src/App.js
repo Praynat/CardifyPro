@@ -1,12 +1,17 @@
-import logo from './logo.svg';
+
 import './App.css';
-import CardsPage from './Cards/Pages/CardsPage';
+
+import { BrowserRouter } from 'react-router-dom';
+import Router from './routes/Router';
+import Layout from './layout/Layout';
 
 function App() {
   return (
-    <>
-    <CardsPage/>
-    </>
+   <BrowserRouter>
+      <Layout>
+        <Router/>
+      </Layout>
+   </BrowserRouter>
   );
 }
 
