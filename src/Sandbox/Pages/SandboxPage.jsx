@@ -12,6 +12,7 @@ export default function SandboxPage() {
         <NavItem to='lifeCycle' label={"Life Cycle"} sx={{color:"black"}}/>
         <NavItem to='Countries' label={"Countries"} sx={{color:"black"}}/>
         <NavItem to='form' label={"FormExample"} sx={{color:"black"}}/>
+        <NavItem to='WindowSize' label={"Window Size"} sx={{color:"black"}}/>
 
       </Toolbar>
     </AppBar>

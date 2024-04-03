@@ -10,6 +10,7 @@ import Counter from '../Sandbox/Components/Counter';
 import LifeCycle from '../Sandbox/Components/LifeCycle';
 import Countries from '../Sandbox/Components/Countries';
 import FormExample from '../Sandbox/Components/FormExample';
+import WindowResize from '../Sandbox/Components/WindowResize';
 
 export default function Router() {
   return (
@@ -23,6 +24,7 @@ export default function Router() {
           <Route path="lifeCycle" element={<LifeCycle/>}/>
           <Route path="Countries" element={<Countries/>}/>
           <Route path="form" element={<FormExample/>}/>
+          <Route path="WindowSize" element={<WindowResize/>}/>
         </Route>
         <Route path="*" element={<ErrorPage/>}/>
     </Routes>

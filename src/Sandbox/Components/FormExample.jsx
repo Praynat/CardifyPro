@@ -13,6 +13,16 @@ export default function FormExample() {
     lastName: "",
   });
 
+  const validatePropertט= (name,value) =>{
+    
+    //create object with this only name and value
+    //create joi object with this only name and the validation
+    //do the validation
+    //return the error.details[0].message OR null
+
+  }
+
+
   const handleChange = (event) => {
     setFormData((prev) => ({
       ...prev,
