@@ -11,6 +11,7 @@ import LifeCycle from '../Sandbox/Components/LifeCycle';
 import Countries from '../Sandbox/Components/Countries';
 import FormExample from '../Sandbox/Components/FormExample';
 import WindowResize from '../Sandbox/Components/WindowResize';
+import SignUpPage from '../users/pages/SignUpPage';
 
 export default function Router() {
   return (
@@ -18,9 +19,10 @@ export default function Router() {
         <Route path={ROUTES.ROOT} element={<CardsPage/>}/>
         <Route path={ROUTES.CARDS} element={<CardsPage/>}/>
         <Route path={ROUTES.ABOUT} element={<AboutPage/>}/>
+        <Route path={ROUTES.SIGNUP} element={<SignUpPage/>}/>       
         <Route path={ROUTES.CARD_INFO + "/:id"} element={<CardsPageDetails/>}/>
         <Route path={ROUTES.SANDBOX} element={<SandboxPage/>}>
-          <Route path="counter" element={<Counter/>}/>
+          <Route path="counter" element={<Counter/>}/>          
           <Route path="lifeCycle" element={<LifeCycle/>}/>
           <Route path="Countries" element={<Countries/>}/>
           <Route path="form" element={<FormExample/>}/>

@@ -31,6 +31,13 @@ export default function LeftNavBar() {
         to={ROUTES.SANDBOX} 
         label={"Sandbox"}/>
         <Divider variant="fullWidth" orientation="vertical" flexItem/>
+
+        <NavItem
+        buttonSx={{color:"white", m:"0 1rem"}}
+        sx={{height:"100px"}}
+        to={ROUTES.SIGNUP} 
+        label={"Signup Page"}/>
+        <Divider variant="fullWidth" orientation="vertical" flexItem/>
       
     </Box>
   );
