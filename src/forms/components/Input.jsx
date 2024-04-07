@@ -1,21 +1,10 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
-
 import Grid from "@mui/material/Grid";
 
-const Input = ({
-  variant = "outlined",
-  type = "text",
-  name,
-  data,
-  label,
-  required = true,
-  error,
-  onChange,
-  ...rest
-}) => {
+const Input = ({ variant = "outlined", type = "text", name, data, label, required = true, error, onChange, ...rest }) => {
   return (
-    <Grid item xs={12} {...rest}>
+    <Grid item xs={12}>
       <TextField
         variant={variant}
         label={label}
@@ -29,6 +18,7 @@ const Input = ({
         onChange={onChange}
         fullWidth
         autoComplete="off"
+        {...rest}
       />
     </Grid>
   );

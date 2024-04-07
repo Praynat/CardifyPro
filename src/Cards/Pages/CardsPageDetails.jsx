@@ -15,6 +15,7 @@ export default function CardsPageDetails() {
     },[id]);
 
     if(isLoading) return <Spinner/>;
+    if (error) return <Error errorMessage={error}/>;
     
     
   return (

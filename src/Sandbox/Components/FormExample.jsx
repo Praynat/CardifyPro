@@ -1,79 +1,64 @@
-import React, { useState } from "react";
-import { Box, Button, TextField } from "@mui/material";
+
+import {Container } from "@mui/material";
 import Joi from "joi";
+import useForm from "../../forms/hooks/useForm";
+
+import Form from "../../forms/components/Form";
+import Input from "../../forms/components/Input";
+import ROUTES from "../../routes/routesModel";
 
   const schema = {
-    firstName: Joi.string().min(4),
-    lastName: Joi.string().min(2).max(10),
+    first: Joi.string().min(4),
+    last: Joi.string().min(2).max(10),
   };
 
-export default function FormExample() {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-  });
+  const initialForm={
+    first: "",
+    last: "",
+  }
+  const handleSubmit=(data)=>{
+    console.log(data);
+  }
 
-  const [errors, setErrors] = useState({});
-
-  const validateProperty = (name, value) => {
-    //create object with this only name and value
-    const obj = { [name]: value };
-    //create joi object with this only name and the validation
-    const generateSchema = Joi.object({ [name]: schema[name] });
-    //do the validation
-    const { error } = generateSchema.validate(obj);
-    //return the error.details[0].message OR null
-    return error ? error.details[0].message : null;
-  };
-
-  const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    const errorMessage = validateProperty(name, value);
-    if (errorMessage) {
-      setErrors((prev) => ({ ...prev, [name]: errorMessage }));
-    } else {
-      setErrors((prev) => {
-        let obj = { ...prev };
-        delete obj[name];
-        return obj;
-      });
-    }
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = () => {
-    const joiSchema = Joi.object(schema);
-    const validateObj = joiSchema.validate(formData);
-    console.log(validateObj);
-  };
-
-  console.log(errors);
-
-  return (
-    <Box>
-      <Box sx={{ m: 10 }}>
-        <TextField
-          label="first name"
-          value={formData.firstName}
-          name="firstName"
-          onChange={handleChange}
-          helperText={errors.firstName}
-          error={Boolean(errors.firstName)}
-        />
-        <TextField
-          label="last name"
-          value={formData.lastName}
-          name="lastName"
-          onChange={handleChange}
-          helperText={errors.lastName}
-          error={Boolean(errors.lastName)}
-        />
-        <Button onClick={handleSubmit}>Submit</Button>
-      </Box>
-    </Box>
-  );
-}
+  export default function FormExample() {
+    const { data, errors, handleChange, handleReset, onSubmit, validateForm } = useForm(
+      initialForm,
+      schema,
+      handleSubmit
+    );
+  
+    return (
+      <Container
+        sx={{
+          mt: 8,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Form
+          title="Test Form"
+          onSubmit={onSubmit}
+          onReset={handleReset}
+          styles={{ maxWidth: "450px" }}
+          validateForm={validateForm}
+          to={ROUTES.SANDBOX}
+        >
+          <Input
+            label="first name"
+            name="first"
+            data={data}
+            error={errors.first}
+            onChange={handleChange}
+          />
+          <Input
+            label="last name"
+            name="last"
+            data={data}
+            error={errors.last}
+            onChange={handleChange}
+          />
+        </Form>
+      </Container>
+    );
+  }
