@@ -4,7 +4,7 @@ import useCounter from '../Hooks/useCounter';
 
 export default function Counter() {
 
-    const {counter, increment, decrement,reset} =useCounter(0,5)
+    const {counter, increment, decrement,reset} =useCounter(0,1)
       useEffect(()=>{
         if (counter===8) {
             
