@@ -5,7 +5,7 @@ import { Typography } from '@mui/material'
 import Cards from './Cards'
 
 export default function CardsFeedback({isLoading, cards, error, handleCardDelete, handleCardLike}) {
-  console.log(isLoading)
+  
  if (isLoading) {return (<Spinner/>)};
  if (error) {return (<Error errorMessage={error}/>)};
  if (cards && cards.length=== 0) {
