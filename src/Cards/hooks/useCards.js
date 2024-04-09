@@ -1,5 +1,5 @@
 import  axios from "axios";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 
 export default function useCards() {
@@ -9,7 +9,7 @@ export default function useCards() {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const getAllCards = async ()=>{
+    const getAllCards = useCallback(async ()=>{
         try {
           setIsLoading(true);
           const response = await axios.get("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/");
@@ -21,7 +21,7 @@ export default function useCards() {
           setIsLoading(false);
           setError(error.message)
         }
-      };
+      },[]);
 
     const getCardById = async (id)=>{
         try {

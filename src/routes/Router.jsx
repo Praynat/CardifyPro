@@ -12,6 +12,8 @@ import Countries from '../Sandbox/Components/Countries';
 import FormExample from '../Sandbox/Components/FormExample';
 import WindowResize from '../Sandbox/Components/WindowResize';
 import SignUpPage from '../users/pages/SignUpPage';
+import LoginPage from '../users/pages/LoginPage';
+import ParentComponent from '../Sandbox/optimization/ParentComponent';
 
 export default function Router() {
   return (
@@ -19,7 +21,8 @@ export default function Router() {
         <Route path={ROUTES.ROOT} element={<CardsPage/>}/>
         <Route path={ROUTES.CARDS} element={<CardsPage/>}/>
         <Route path={ROUTES.ABOUT} element={<AboutPage/>}/>
-        <Route path={ROUTES.SIGNUP} element={<SignUpPage/>}/>       
+        <Route path={ROUTES.SIGNUP} element={<SignUpPage/>}/>   
+        <Route path={ROUTES.LOGIN} element={<LoginPage/>}/>    
         <Route path={ROUTES.CARD_INFO + "/:id"} element={<CardsPageDetails/>}/>
         <Route path={ROUTES.SANDBOX} element={<SandboxPage/>}>
           <Route path="counter" element={<Counter/>}/>          
@@ -27,6 +30,7 @@ export default function Router() {
           <Route path="Countries" element={<Countries/>}/>
           <Route path="form" element={<FormExample/>}/>
           <Route path="WindowSize" element={<WindowResize/>}/>
+          <Route path="Optimization" element={<ParentComponent/>}/>
         </Route>
         <Route path="*" element={<ErrorPage/>}/>
     </Routes>

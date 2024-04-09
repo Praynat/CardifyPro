@@ -11,7 +11,7 @@ export default function CardsPage() {
 
   useEffect(()=>{
     getAllCards();
-  }, []);
+  }, [getAllCards]);
 
   return (
     <>
