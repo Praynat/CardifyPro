@@ -25,6 +25,7 @@ const navigate = useNavigate();
     handleCardDelete={handleCardDelete}
     handleCardLike={handleCardLike}
     cardId={card._id}
+    userId={card.user_id}
     />
   </Card>
 );

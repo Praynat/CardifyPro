@@ -14,6 +14,7 @@ export default function SandboxPage() {
         <NavItem to='form' label={"FormExample"} sx={{color:"black"}}/>
         <NavItem to='WindowSize' label={"Window Size"} sx={{color:"black"}}/>
         <NavItem to='optimization' label={"Optimization"} sx={{color:"black"}}/>
+        <NavItem to='Context' label={"Context"} sx={{color:"black"}}/>
 
       </Toolbar>
     </AppBar>

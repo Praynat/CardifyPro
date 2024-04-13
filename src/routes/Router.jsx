@@ -14,6 +14,7 @@ import WindowResize from '../Sandbox/Components/WindowResize';
 import SignUpPage from '../users/pages/SignUpPage';
 import LoginPage from '../users/pages/LoginPage';
 import ParentComponent from '../Sandbox/optimization/ParentComponent';
+import ParentComponentPage from '../Sandbox/context/ParentComponentPage';
 
 export default function Router() {
   return (
@@ -32,6 +33,7 @@ export default function Router() {
           <Route path="form" element={<FormExample/>}/>
           <Route path="WindowSize" element={<WindowResize/>}/>
           <Route path="Optimization" element={<ParentComponent/>}/>
+          <Route path="context" element={<ParentComponentPage/>}/>
         </Route>
         <Route path="*" element={<ErrorPage/>}/>
     </Routes>
