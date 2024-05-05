@@ -3,7 +3,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import CallIcon from '@mui/icons-material/Call';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import React, { useState } from 'react'
+import React from 'react'
 import { useMyUser } from '../../../users/providers/UserProvider';
 
 
@@ -12,10 +12,10 @@ export default function CardActionbar({handleCardDelete,handleCardLike,cardId,us
   const handleCardEdit = (id)=>{
     console.log("navigate to edit page for the card"+ id);
   }
-  const Usercontext =useMyUser();
+  const {myUser } =useMyUser();
 
   const isDisabled=()=>{
-   return  Usercontext.isAdmin|| Usercontext._id===userId
+   return  myUser.isAdmin|| myUser._id===userId
   }
 
   return (

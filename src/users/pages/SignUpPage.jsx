@@ -4,15 +4,21 @@ import initialSignupForm from "../helpers/initialForms/initialSignupForm";
 import signupSchema from "../models/signupSchema";
 import Container from "@mui/material/Container";
 import SignupForm from "../components/SignupForm";
+import { useMyUser } from "../providers/UserProvider";
+import { Navigate } from "react-router-dom";
+import ROUTES from "../../routes/routesModel";
+import useUsers from "../hooks/useUsers";
 
-const handleSubmit = (data) => {
-  console.log(data);
-};
 
 export default function SignupPage() {
+  const {handleSignup} = useUsers();
+  
   const { data, errors, handleChange, handleReset, validateForm, onSubmit } =
-    useForm(initialSignupForm, signupSchema, handleSubmit);
-  console.log(data);
+    useForm(initialSignupForm, signupSchema, handleSignup);
+
+  const {user}=useMyUser();
+  
+  if (user) return <Navigate to={ROUTES.ROOT} replace/>
   return (
     <Container
       sx={{
@@ -34,3 +40,6 @@ export default function SignupPage() {
     </Container>
   );
 }
+
+
+//have to add loading (on button or else) and error (if email already exists...)

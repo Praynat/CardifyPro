@@ -7,14 +7,17 @@ import PageHeader from "../../Cards/Components/PageHeader";
 import Form from "../../forms/components/Form";
 import ROUTES from "../../routes/routesModel";
 import Input from "../../forms/components/Input";
-
-const handleSubmit = (x) => {
-  console.log(x);
-};
+import { useMyUser } from "../providers/UserProvider";
+import { Navigate } from "react-router-dom";
+import useUsers from "../hooks/useUsers";
 
 export default function LoginPage() {
+  const {handleLogin} = useUsers();
   const { data, errors, handleChange, handleReset, validateForm, onSubmit } =
-    useForm(initialLoginForm, loginSchema, handleSubmit);
+    useForm(initialLoginForm, loginSchema, handleLogin);
+
+    const {user}=useMyUser();
+    if (user) return <Navigate to={ROUTES.ROOT} replace/>
   return (
     <Container>
       <PageHeader
