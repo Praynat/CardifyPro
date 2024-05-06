@@ -15,13 +15,16 @@ try {
 }
 }
 
-export const getCard = async(cardId)=>{
+export const getCard = async (cardId) => {
     try {
+      if (cardId && cardId !== "") {
         const response = await axios.get(`${apiUrl}/${cardId}`);
-        const data =response.data;
-        return data
-        
+        const data = response.data;
+        return data;
+      } else {
+        throw new Error("Invalid card ID");
+      }
     } catch (err) {
-        throw new Error(err.message)
+      throw new Error(err.message);
     }
-}
+  };

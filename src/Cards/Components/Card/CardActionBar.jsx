@@ -12,22 +12,22 @@ export default function CardActionbar({handleCardDelete,handleCardLike,cardId,us
   const handleCardEdit = (id)=>{
     console.log("navigate to edit page for the card"+ id);
   }
-  const {myUser } =useMyUser();
+  const {user } =useMyUser();
 
   const isDisabled=()=>{
-   return  myUser.isAdmin|| myUser._id===userId
+    return user? (user.isAdmin || user._id === userId) : false;
   }
 
   return (
     <>
     <CardActions sx={{ paddingTop: 0, justifyContent: "space-between" }}>
         <Box>
-          <IconButton disabled={isDisabled} onClick={()=>{
+          <IconButton disabled={isDisabled()} onClick={()=>{
             handleCardDelete(cardId)
           }}>
             <DeleteIcon />
           </IconButton>
-          <IconButton disabled={isDisabled} onClick={()=> handleCardEdit(cardId)}>
+          <IconButton disabled={isDisabled()} onClick={()=> handleCardEdit(cardId)}>
             <ModeEditIcon />
           </IconButton>        
         </Box>

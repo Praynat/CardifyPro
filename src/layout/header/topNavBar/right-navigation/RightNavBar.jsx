@@ -7,6 +7,7 @@ import Logged from "./Logged";
 import NotLogged from "./NotLogged";
 import { useTheme } from "../../../../providers/CustomThemeProvider";
 import { useMyUser } from "../../../../users/providers/UserProvider";
+import MoreButton from "./MoreButton";
 
 export default function RightNavBar() {
   const { user } = useMyUser();
@@ -26,6 +27,7 @@ export default function RightNavBar() {
         {user && <Logged />}
         {!user && <NotLogged />}
       </Box>
+      <MoreButton/>
     </>
   );
 }

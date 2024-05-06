@@ -8,7 +8,7 @@ export default function Logo() {
    <Box sx={{margin:"1rem"}}>
    <NavBarLink to={ROUTES.CARDS}>
     <Typography variant='h4' sx={{
-     display:{xs:"none", md:"inline-flex"}, fontFamily:"fantasy", marginRight:"2", color:'black'
+      fontFamily:"fantasy", marginRight:"2", color:'black'
     }}>
      BCard
     </Typography>
