@@ -3,6 +3,7 @@ import PageHeader from "../Components/PageHeader";
 import { Card } from "@mui/material";
 import CardsFeedback from "../Components/CardsFeedback";
 import useCards from "../hooks/useCards";
+import AddNewCardButton from "../Components/AddNewCardButton";
 
 
 export default function CardsPage() {
@@ -30,7 +31,7 @@ export default function CardsPage() {
     handleCardDelete={handleCardDelete}
     handleCardLike={handleCardLike}
     />
-
+    <AddNewCardButton/>
   </>
   )
   
