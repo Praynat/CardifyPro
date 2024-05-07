@@ -16,7 +16,6 @@ export default function useCards() {
           const data =await getCards();
           setCards(data);
           setIsLoading(false);
-  
         } catch (error) {
           setIsLoading(false);
           setError(error.message)

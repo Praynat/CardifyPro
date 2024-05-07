@@ -1,9 +1,11 @@
 import Joi from "joi";
 import { useState, useCallback, useMemo } from "react";
+import { useSnack } from "../../providers/SnackbarProvider";
 
 export default function useForm(initialForm, schema, handleSubmit) {
   const [data, setData] = useState(initialForm);
   const [errors, setErrors] = useState({});
+  const setSnack = useSnack();
 
   const validateProperty = useCallback((name, value) => {
     const obj = { [name]: value };
@@ -43,7 +45,8 @@ export default function useForm(initialForm, schema, handleSubmit) {
 
   const onSubmit = useCallback(() => {
     handleSubmit(data);
-  }, [data, handleSubmit]);
+    setSnack()
+  }, [data, handleSubmit,setSnack]);
 
   return useMemo(() => ({
     data,

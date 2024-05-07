@@ -10,6 +10,7 @@ import Input from "../../forms/components/Input";
 import { useMyUser } from "../providers/UserProvider";
 import { Navigate } from "react-router-dom";
 import useUsers from "../hooks/useUsers";
+import { useSnack } from "../../providers/SnackbarProvider";
 
 export default function LoginPage() {
   const {handleLogin} = useUsers();
@@ -17,7 +18,16 @@ export default function LoginPage() {
     useForm(initialLoginForm, loginSchema, handleLogin);
 
     const {user}=useMyUser();
-    if (user) return <Navigate to={ROUTES.ROOT} replace/>
+    const setSnack = useSnack();
+    if (user) return (
+    <Navigate to={ROUTES.ROOT} replace/>)
+
+    const onFormSubmit = () => {
+      onSubmit();
+      setTimeout(() => {
+        setSnack("success","Login successful");        
+      }, 1000);
+    };
   return (
     <Container>
       <PageHeader
@@ -36,7 +46,7 @@ export default function LoginPage() {
           title="login"
           styles={{ maxWidth: "450px" }}
           to={ROUTES.ROOT}
-          onSubmit={onSubmit}
+          onSubmit={onFormSubmit}
           onReset={handleReset}
           validateForm={validateForm}
         >
