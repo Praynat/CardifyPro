@@ -51,6 +51,7 @@ export default function useForm(initialForm, schema, handleSubmit) {
   return useMemo(() => ({
     data,
     errors,
+    setData,
     handleChange,
     handleReset,
     onSubmit,

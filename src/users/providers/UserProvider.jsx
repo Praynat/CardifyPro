@@ -11,6 +11,13 @@ export default function UserProvider({children}) {
 
     const [token, setToken] = useState(getToken());
     const[user, setUser]=useState(null);
+    useEffect(() => {
+        if (!user) {
+          const userFromLocalStorage = getUser();
+          setUser(userFromLocalStorage);
+        }
+      }, [user]);
+      
     const value = useMemo(()=>({
         user,
         token,
@@ -18,12 +25,6 @@ export default function UserProvider({children}) {
         setUser,
     }),[token,user])
 
-    useEffect(() => {
-        if (!user) {
-          const userFromLocalStorage = getUser();
-          setUser(userFromLocalStorage);
-        }
-      }, [user]);
     
 
 

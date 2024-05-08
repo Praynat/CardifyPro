@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import useForm from "../../forms/hooks/useForm";
 import ROUTES from "../../routes/routesModel";
-import { useUser } from "../../users/providers/UserProvider";
+import { useMyUser } from "../../users/providers/UserProvider";
 import CardForm from "../Components/CardForm";
 import initialCardForm from "../helpers/initialForms/initialCardForm";
 import mapCardToModel from "../helpers/normalization/mapToModel";
@@ -11,14 +11,13 @@ import useCards from "../hooks/useCards";
 import cardSchema from "../models/cardSchema";
 
 export default function EditCardPage() {
-  //what do we need in this page
-  //id of the card - useParams
+  
   const { id } = useParams();
-  //handleUpdateCard & handleGetCard & card - useCards
+  
   const { handleUpdateCard, getCardById, card } = useCards();
 
-  //user - useUser (provider)
-  const { user } = useUser();
+  //user - useMyUser (provider)
+  const { user } = useMyUser();
   //useForm (initialForm,schema,onSubmit)
   const {
     data,
