@@ -6,11 +6,14 @@ import {
     Divider,
     Typography,
   } from "@mui/material";
+import UseCapitalize from '../../../hooks/UseCapitalize';
 
 export default function CardBodyComponent({title,subtitle,phone,adress,cardNumber}) {
+  const {capitalizeFirstLetter,capitalizeAllFirstLetter}=UseCapitalize();
+  
   return (
     <>
-        <CardHeader title={title} subheader={subtitle} />
+        <CardHeader title={capitalizeAllFirstLetter(title)} subheader={capitalizeFirstLetter(subtitle)} />
         <Divider variant="middle" />
         <CardContent>
             <Typography variant="body2" color="text.secondary">
