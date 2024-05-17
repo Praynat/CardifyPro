@@ -1,21 +1,20 @@
-import { BottomNavigation, BottomNavigationAction, Paper } from '@mui/material'
+import {  Paper } from '@mui/material'
 import React from 'react'
-import StyleIcon from '@mui/icons-material/Style';
-import Info from '@mui/icons-material/Info';
-import ROUTES from '../../routes/routesModel';
-import { useNavigate } from 'react-router-dom';
+
+import LeftSide from './left-side/LeftSide';
+import RightSide from './right-side/RightSide';
 
 export default function Footer() {
-  const navigate = useNavigate();
+  
   return (
     <Paper 
     elevation={3}
-    sx={{position:"sticky", bottom:"0",left:"0",right:"0"}}
+    sx={{position:"sticky", bottom:"0",left:"0",right:"0",width:"100%",backgroundColor:"#374151", height:"68px",display:"flex",alignItems:"center",justifyContent:"space-between"}}
     >
-      <BottomNavigation showLabels>
-        <BottomNavigationAction label="About" icon={<Info/>} onClick={() => navigate(ROUTES.ABOUT)}/>
-        <BottomNavigationAction label="Cards" icon={<StyleIcon/>} onClick={() => navigate(ROUTES.CARDS)}/>
-      </BottomNavigation>
+      
+      <LeftSide/>
+      <RightSide/>
+      
     </Paper>
   )
 }

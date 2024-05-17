@@ -8,6 +8,7 @@ export default function CardHeaderComponent({image}) {
         height="140"
         image={image.url}
         alt={image.alt}
+        sx={{borderRadius:"inherit"}}
     />
   )
 }

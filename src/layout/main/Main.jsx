@@ -4,9 +4,13 @@ import React from 'react'
 export default function Main({children}) {
   return (
     <Box sx={{
+        display:"flex",
+        flexDirection:"vertical",
+        alignItems:"center",
+        mt:"68px",
         minHeight:"85vh",
-        backgroundColor:"beige"
-    }}>
+        backgroundColor:"#111827"
+        }}>
         {children}
     </Box>
   )

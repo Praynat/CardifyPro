@@ -1,12 +1,12 @@
-import {Container} from '@mui/material';
+import {Box, Container} from '@mui/material';
 import React from 'react'
 import CardComponent from './Card/CardComponent';
 export default function Cards({ cards ,handleCardDelete,handleCardLike}) {
        
       return ( 
 
-        <div>
-          <Container sx={{display:"flex", flexWrap:"Wrap"}}>
+        <Box >
+          <Container sx={{display:"flex", flexWrap:"Wrap", justifyContent:"center"}}>
             {cards.map((card)=>(
             <CardComponent 
             key={card._id}
@@ -15,6 +15,6 @@ export default function Cards({ cards ,handleCardDelete,handleCardLike}) {
             handleCardLike={handleCardLike}/>
             ))}
           </Container>
-        </div>
+        </Box>
       )
 }

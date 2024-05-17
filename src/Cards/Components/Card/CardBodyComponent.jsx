@@ -13,18 +13,27 @@ export default function CardBodyComponent({title,subtitle,phone,adress,cardNumbe
   
   return (
     <>
-        <CardHeader title={capitalizeAllFirstLetter(title)} subheader={capitalizeFirstLetter(subtitle)} />
+        <CardHeader title={capitalizeAllFirstLetter(title)} subheader={capitalizeFirstLetter(subtitle)} 
+        sx={{
+          '.MuiCardHeader-subheader': {
+            color: 'white',
+          },
+          '.MuiCardHeader-title': {
+            color: 'white',
+          },
+        }}
+        />
         <Divider variant="middle" />
         <CardContent>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="white">
             <strong>Phone: </strong>
             {phone}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="white">
             <strong>Address: </strong>
             {adress.city} {adress.street} {adress.houseNumber}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="white">
             <strong>Card Number: </strong>
             {cardNumber.bizNumber}
             </Typography>

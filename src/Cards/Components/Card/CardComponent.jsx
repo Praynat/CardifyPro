@@ -15,7 +15,7 @@ export default function CardComponent({card,handleCardDelete,handleCardLike}) {
 const navigate = useNavigate();
 
   return (
-  <Card sx={{ width: 250, m: 2 }}>
+  <Card sx={{ width: 250, m: 2,padding:"10px", backgroundColor:"#1F2937", borderRadius:"10px" }}>
     <CardActionArea onClick={()=> navigate(ROUTES.CARD_INFO + "/" + card._id)}>
       <CardImageComponent image={card.image}/>
       <CardBodyComponent title={card.title} subtitle={card.subtitle} phone={card.phone} adress ={card.address} cardNumber={card.bizNumber}/>

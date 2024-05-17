@@ -1,10 +1,11 @@
 import React from 'react'
 import NavBar from './topNavBar/NavBar'
+import { Box } from '@mui/material'
 
 export default function Header() {
   return (
-    <div>
+    <Box position={'relative'}>
       <NavBar/>
-    </div>
+    </Box>
   )
 }

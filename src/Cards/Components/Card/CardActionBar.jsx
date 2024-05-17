@@ -26,10 +26,10 @@ export default function CardActionBar({
       <Box>
         {user && (user.isAdmin || user._id === userId) ? (
           <>
-            <IconButton onClick={() => handleCardDelete(cardId)}>
+            <IconButton sx={{color:"white"}} onClick={() => handleCardDelete(cardId)}>
               <DeleteIcon />
             </IconButton>
-            <IconButton onClick={() => handleCardEdit(cardId)}>
+            <IconButton sx={{color:"white"}} onClick={() => handleCardEdit(cardId)}>
               <ModeEditIcon />
             </IconButton>
           </>
@@ -37,10 +37,10 @@ export default function CardActionBar({
       </Box>
 
       <Box>
-        <IconButton>
+        <IconButton sx={{color:"white"}} >
           <CallIcon />
         </IconButton>
-        <IconButton onClick={() => handleCardLike(cardId)}>
+        <IconButton sx={{color:"white"}} onClick={() => handleCardLike(cardId)}>
           <FavoriteIcon />
         </IconButton>
       </Box>
