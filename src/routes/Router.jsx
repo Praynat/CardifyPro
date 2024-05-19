@@ -20,6 +20,7 @@ import EditCardPage from '../Cards/Pages/EditCardPage';
 import MyCardsPage from '../Cards/Pages/MyCardsPage';
 import FavoritesPage from '../Cards/Pages/FavoritesPage';
 import ContactPage from '../Pages/ContactPage';
+import SearchPage from '../layout/header/topNavBar/right-navigation/Search/SearchPage';
 
 export default function Router() {
   return (
@@ -28,6 +29,7 @@ export default function Router() {
         <Route path={ROUTES.CARDS} element={<CardsPage/>}/>
         <Route path={ROUTES.MY_CARDS} element={<MyCardsPage/>}/>
         <Route path={ROUTES.FAV_CARDS} element={<FavoritesPage/>}/>
+        <Route path={ROUTES.SEARCH_CARDS} element={<SearchPage/>}/>
         <Route path={ROUTES.ABOUT} element={<AboutPage/>}/>
         <Route path={ROUTES.CONTACT} element={<ContactPage/>}/>
         <Route path={ROUTES.SIGNUP} element={<SignUpPage/>}/>   

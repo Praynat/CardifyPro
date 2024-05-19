@@ -6,7 +6,8 @@ import Logged from "./Logged";
 import NotLogged from "./NotLogged";
 import { useMyUser } from "../../../../users/providers/UserProvider";
 import MoreButton from "./MoreButton";
-import Search from "../../../../Search/Search";
+import SearchBar from "./Search/SearchBar";
+
 
 export default function RightNavBar() {
   const { user } = useMyUser();
@@ -17,11 +18,12 @@ export default function RightNavBar() {
         sx={{
           display: { xs: "none", md: "inline-flex" },
           alignItems: "center",
+          gap:"20px"
         }}
       >
         
 
-        <Search/>
+        <SearchBar/>
 
         {user && <Logged />}
         {!user && <NotLogged />}

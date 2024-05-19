@@ -1,9 +1,12 @@
 import { useCallback, useState } from "react";
 import {
+  changeLikeStatus,
   createCard,
   editCard,
   getCard,
   getCards,
+  getMyCards,
+
 } from "../Services/cardsApiService";
 import { useSnack } from "../../providers/SnackbarProvider";
 import { useNavigate } from "react-router-dom";
@@ -26,6 +29,19 @@ export default function useCards() {
       setError(null);
       setIsLoading(true);
       const data = await getCards();
+      setCards(data);
+      
+    } catch (err) {
+      setError(err.message);
+    }
+    setIsLoading(false);
+  }, []);
+
+  const getAllMyCards = useCallback(async () => {
+    try {
+      setError(null);
+      setIsLoading(true);
+      const data = await getMyCards();
       setCards(data);
       
     } catch (err) {
@@ -90,9 +106,18 @@ export default function useCards() {
     console.log("you deleted card no" + id);
   }, []);
 
-  const handleCardLike = useCallback((id) => {
-    console.log("you liked card no" + id);
-  }, []);
+  const handleCardLike = useCallback(
+    async (id) => {
+      try {
+        const cards = await changeLikeStatus(id);
+        setCards(cards)
+        setSnack("success", "Card like status updated");
+      } catch (error) {
+        setSnack("error", error.message);
+      }
+    },
+    [setSnack]
+  );
 
   return {
     cards,
@@ -105,5 +130,6 @@ export default function useCards() {
     handleCardLike,
     handleCreateCard,
     handleUpdateCard,
+    getAllMyCards
   };
 }

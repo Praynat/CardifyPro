@@ -4,7 +4,7 @@ import Error from "../../Sandbox/Components/Error"
 import { Typography } from '@mui/material'
 import Cards from './Cards'
 
-export default function CardsFeedback({isLoading, cards, error, handleCardDelete, handleCardLike}) {
+export default function CardsFeedback({isLoading, cards, error, handleCardDelete, handleCardLike,selected,searchInput}) {
   
  if (isLoading) {return (<Spinner/>)};
  if (error) {return (<Error errorMessage={error}/>)};
@@ -21,6 +21,8 @@ export default function CardsFeedback({isLoading, cards, error, handleCardDelete
         cards={cards}
         handleCardDelete={handleCardDelete}
         handleCardLike={handleCardLike}
+        selected={selected}
+        searchInput={searchInput}
         />
     )
   }
