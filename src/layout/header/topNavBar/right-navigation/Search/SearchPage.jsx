@@ -1,35 +1,37 @@
-import React, { useEffect, useMemo } from 'react'
-import CardsFeedback from '../../../../../Cards/Components/CardsFeedback'
+import CardsFeedback from '../../../../../Cards/Components/CardsFeedback';
 import useCards from '../../../../../Cards/hooks/useCards';
 import { Box } from '@mui/material';
 import { useMySearch } from './Provider/SearchProvider';
 
 export default function SearchPage() {
-    const { cards,error,isLoading, getAllCards,handleCardDelete,handleCardLike} = useCards();
-    const { selected, searchInput } = useMySearch();
+  const { cards, error, isLoading, handleCardDelete, handleCardLike } = useCards();
+  const { selected, searchInput, filteredAllCards, filteredMyCards, filteredFavCards } = useMySearch();
 
-  useEffect(()=>{
-    getAllCards();
-  }, [getAllCards]);
-      const filteredCards = useMemo(() => {
-        if (!searchInput) return cards;
-        return cards.filter((card) =>
-          card.title.toLowerCase().includes(searchInput.toLowerCase())
-        );
-      }, [cards, searchInput]);
-    
+  const filteredCards = () => {
+    if (!searchInput) {
+      return cards;
+    }
+    if (selected === "My Cards") {
+      return filteredMyCards;
+    }
+    if (selected === "Favorites") {
+      return filteredFavCards;
+    }
+    return filteredAllCards;
+  };
 
+ 
   return (
-    <Box sx={{width:"100%"}}>
-        <CardsFeedback 
-        cards={filteredCards}
+    <Box sx={{ width: "100%" }}>
+      <CardsFeedback
+        cards={filteredCards()}
         isLoading={isLoading}
         error={error}
         handleCardDelete={handleCardDelete}
         handleCardLike={handleCardLike}
         selected={selected}
         searchInput={searchInput}
-        /> 
+      />
     </Box>
-    )
+  );
 }

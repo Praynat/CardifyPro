@@ -11,7 +11,7 @@ import CardActionbar from "./CardActionBar";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../../../routes/routesModel";
 
-export default function CardComponent({card,handleCardDelete,handleCardLike}) {
+export default function CardComponent({card,handleCardDelete,handleCardLike,likes}) {
 const navigate = useNavigate();
 
   return (
@@ -25,7 +25,8 @@ const navigate = useNavigate();
     handleCardDelete={handleCardDelete}
     handleCardLike={handleCardLike}
     cardId={card._id}
-    userId={card.user_id}
+    cardUserId={card.user_id}
+    likes={likes}
     />
   </Card>
 );

@@ -14,7 +14,9 @@ export default function Cards({ cards ,handleCardDelete,handleCardLike}) {
             key={card._id}
             card={card}
             handleCardDelete={handleCardDelete}
-            handleCardLike={handleCardLike}/>
+            handleCardLike={handleCardLike}
+            likes={card.likes}
+            />
 
             ))}
           </Container>

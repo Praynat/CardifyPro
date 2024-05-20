@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import ROUTES from "../../routes/routesModel";
 import useAxios from "../../hooks/useAxios";
 import normalizeCard from "../helpers/normalization/normalizeCard";
+import { useMyUser } from "../../users/providers/UserProvider";
 
 export default function useCards() {
   const [card, setCard] = useState(null);
@@ -21,15 +22,32 @@ export default function useCards() {
   const [error, setError] = useState();
   const navigate = useNavigate();
   const setSnack = useSnack();
+  const {user}= useMyUser();
 
   useAxios();
 
+  
   const getAllCards = useCallback(async () => {
     try {
       setError(null);
       setIsLoading(true);
       const data = await getCards();
       setCards(data);
+      
+    } catch (err) {
+      setError(err.message);
+    }
+    setIsLoading(false);
+  }, []);
+
+  const getFavCards = useCallback(async () => {
+    try {
+      setError(null);
+      setIsLoading(true);
+      const data = await getCards();
+      const filteredData = data.filter(card => card.likes.includes(user._id));
+
+      setCards(filteredData);
       
     } catch (err) {
       setError(err.message);
@@ -110,7 +128,6 @@ export default function useCards() {
     async (id) => {
       try {
         const cards = await changeLikeStatus(id);
-        setCards(cards)
         setSnack("success", "Card like status updated");
       } catch (error) {
         setSnack("error", error.message);
@@ -130,6 +147,7 @@ export default function useCards() {
     handleCardLike,
     handleCreateCard,
     handleUpdateCard,
-    getAllMyCards
+    getAllMyCards,
+    getFavCards
   };
 }

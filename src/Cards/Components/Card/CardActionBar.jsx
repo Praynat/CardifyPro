@@ -1,5 +1,5 @@
 import { Box, CardActions, IconButton } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import CallIcon from "@mui/icons-material/Call";
@@ -12,19 +12,32 @@ export default function CardActionBar({
   handleCardLike,
   handleCardDelete,
   cardId,
-  userId,
+  cardUserId,
+  likes
 }) {
   const { user } = useMyUser();
   const navigate = useNavigate();
+  const [liked, setLiked]= useState(false)
+
+
+  const handleThisCardLike = () => {
+    setLiked((prevLiked) => !prevLiked);
+    handleCardLike(cardId);
+  };
+
+  useEffect(() => {
+    if (user && likes.includes(user._id)) {
+      setLiked(true);
+    }
+  }, [user, likes]);
 
   const handleCardEdit = (id) => {
     navigate(ROUTES.EDIT_CARD + "/" + id);
   };
-
   return (
     <CardActions sx={{ paddingTop: 0, justifyContent: "space-between" }}>
       <Box>
-        {user && (user.isAdmin || user._id === userId) ? (
+        {user && (user.isAdmin || user._id === cardUserId) ? (
           <>
             <IconButton sx={{color:"white"}} onClick={() => handleCardDelete(cardId)}>
               <DeleteIcon />
@@ -40,7 +53,7 @@ export default function CardActionBar({
         <IconButton sx={{color:"white"}} >
           <CallIcon />
         </IconButton>
-        <IconButton sx={{color:"white"}} onClick={() => handleCardLike(cardId)}>
+        <IconButton sx={{color: liked? "red":"white"}} onClick={() => handleThisCardLike()}>
           <FavoriteIcon />
         </IconButton>
       </Box>

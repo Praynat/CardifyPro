@@ -11,7 +11,7 @@ export default function CardsFeedback({isLoading, cards, error, handleCardDelete
  if (cards && cards.length=== 0) {
     
     return (
-    <Typography m={2}>
+    <Typography m={2} color={'white'}>
         Oops...it seems there is no business cards to display!
     </Typography>
   )};

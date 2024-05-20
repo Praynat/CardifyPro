@@ -14,13 +14,13 @@ function App() {
    <BrowserRouter>
       <UserProvider>
         <CustomThemeProvider>
-         <SearchProvider>
           <SnackbarProvider>
+         <SearchProvider>
             <Layout>
               <Router/>
             </Layout>
-          </SnackbarProvider>
          </SearchProvider>
+          </SnackbarProvider>
         </CustomThemeProvider>
       </UserProvider>
    </BrowserRouter>
