@@ -53,7 +53,7 @@ export default function useCards() {
       setError(err.message);
     }
     setIsLoading(false);
-  }, [user._id]);
+  }, []);
 
   const getAllMyCards = useCallback(async () => {
     try {

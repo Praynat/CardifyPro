@@ -1,6 +1,6 @@
 
 import React, { useEffect} from 'react'
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import CardsFeedback from '../Components/CardsFeedback';
 import useCards from '../hooks/useCards';
 
@@ -14,7 +14,10 @@ export default function MyCardsPage() {
     
 
   return (
-    <Box sx={{width:"100%"}}>
+    <Box sx={{width:"100%",display:"flex",flexDirection:"column", alignItems:"center",height:"70vh"}}>
+      <Typography variant="h1" sx={{fontFamily:"roboto", fontWeight:"550",fontSize:"48px", marginBottom:"30px", color:'white'}}>
+          My Cards
+      </Typography>
         <CardsFeedback 
         cards={cards}
         isLoading={isLoading}

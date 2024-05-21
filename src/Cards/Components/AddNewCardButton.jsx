@@ -8,18 +8,22 @@ export default function AddNewCardButton() {
   const navigate = useNavigate();
   return (
     <Fab
-      color="primary"
+      
       aria-label="add"
       sx={{
         position: "fixed",
         bottom: 75,
         right: 16,
+        backgroundColor:"#438EFF",
+        color:"white",
+        scale:"0.9",
+        border:"black"
       }}
       onClick={() => {
         navigate(ROUTES.CREATE_CARD);
       }}
     >
-      <AddIcon />
+      <AddIcon sx={{color:"white"}}/>
     </Fab>
   );
 }
