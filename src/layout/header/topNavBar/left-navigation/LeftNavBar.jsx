@@ -7,6 +7,7 @@ import { useMyUser } from "../../../../users/providers/UserProvider";
 export default function LeftNavBar() {  
   const { user } = useMyUser();
   const matchesMd = useMediaQuery((theme) => theme.breakpoints.up("md"));
+ 
 
   return (
     <Box sx={{display:"flex", alignItems:"center",overflow: 'hidden'}}>        
@@ -17,7 +18,7 @@ export default function LeftNavBar() {
         <NavItem
           buttonSx={{color:"white", m:"0 1rem"}}
           sx={{height:"100px", backgrounndColor:"red"}}
-          to={ROUTES.CARDS} 
+          to={ROUTES.HOME} 
           label={"Home"}/>
         
         <NavItem

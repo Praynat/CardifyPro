@@ -21,11 +21,13 @@ import MyCardsPage from '../Cards/Pages/MyCardsPage';
 import FavoritesPage from '../Cards/Pages/FavoritesPage';
 import ContactPage from '../Pages/ContactPage';
 import SearchPage from '../layout/header/topNavBar/right-navigation/Search/SearchPage';
+import HomePage from '../Pages/HomePage';
 
 export default function Router() {
   return (
     <Routes>
-        <Route path={ROUTES.ROOT} element={<CardsPage/>}/>
+        <Route path={ROUTES.ROOT} element={<HomePage/>}/>
+        <Route path={ROUTES.HOME} element={<HomePage/>}/>
         <Route path={ROUTES.CARDS} element={<CardsPage/>}/>
         <Route path={ROUTES.MY_CARDS} element={<MyCardsPage/>}/>
         <Route path={ROUTES.FAV_CARDS} element={<FavoritesPage/>}/>

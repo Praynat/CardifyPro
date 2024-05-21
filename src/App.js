@@ -8,6 +8,7 @@ import UserProvider from './users/providers/UserProvider';
 import CustomThemeProvider from './providers/CustomThemeProvider';
 import SnackbarProvider from './providers/SnackbarProvider';
 import { SearchProvider } from './layout/header/topNavBar/right-navigation/Search/Provider/SearchProvider';
+import { ScrollProvider } from './layout/Provider/ScrollProvider';
 
 function App() {
   return (
@@ -15,11 +16,13 @@ function App() {
       <UserProvider>
         <CustomThemeProvider>
           <SnackbarProvider>
-         <SearchProvider>
-            <Layout>
-              <Router/>
-            </Layout>
-         </SearchProvider>
+         <ScrollProvider>
+          <SearchProvider>
+             <Layout>
+               <Router/>
+             </Layout>
+          </SearchProvider>
+         </ScrollProvider>
           </SnackbarProvider>
         </CustomThemeProvider>
       </UserProvider>
