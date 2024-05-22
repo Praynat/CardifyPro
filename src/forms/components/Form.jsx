@@ -23,12 +23,12 @@ const Form = ({
     <Box
       component="form"
       color={color}
-      sx={{ mt: 2, p: { xs: 1, sm: 2 }, ...styles }}
+      sx={{  p: { xs: 1, sm: 2 }, ...styles }}
       onSubmit={onSubmit}
       autoComplete="off"
       noValidate
     >
-      <Typography align="center" variant="h5" component="h1" mb={2}>
+      <Typography align="center" variant="h5" component="h1" mb={2} sx={{fontFamily:"roboto", fontWeight:"400",fontSize:"30px", color:'white'}}>
         {title.charAt(0).toUpperCase() + title.slice(1)}
       </Typography>
 

@@ -11,12 +11,15 @@ const NotLogged = () => {
       buttonSx={{color:"white", m:"0 0.1rem"}}
       sx={{height:"100px"}}
       to={ROUTES.LOGIN} 
-      label={"Login Page"}/>
+      label={"Login"}/>
       <NavItem
       buttonSx={{color:"white", m:"0 0.1rem"}}
       sx={{height:"100px"}}
       to={ROUTES.SIGNUP} 
-      label={"Signup Page"}/>
+      label={"Signup"}
+      variant="contained"
+      color="primary"
+      />
         
     </Box>
   );

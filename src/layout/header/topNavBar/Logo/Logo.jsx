@@ -6,7 +6,7 @@ import { FiLayers } from "react-icons/fi";
 
 export default function Logo() {
   return (
-    <NavBarLink to={ROUTES.CARDS}>
+    <NavBarLink to={ROUTES.HOME}>
 
       <Box sx={{margin:"1rem", display:"flex", alignItems:"center"}}>
         <IconButton>

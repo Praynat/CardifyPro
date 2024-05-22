@@ -19,6 +19,13 @@ const FormButton = ({
       onClick={onClick}
       disabled={disabled}
       fullWidth
+      sx={{
+        '&.Mui-disabled': {
+          backgroundColor: '#273758', // Set your desired disabled background color here
+          color: '#B2B2B2', // Set your desired disabled text color here
+          borderColor:"white"
+        },
+      }}
     >
       {node}
     </Button>
