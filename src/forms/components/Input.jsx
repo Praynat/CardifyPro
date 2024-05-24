@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import { makeFirstLetterCapital } from "../utils/algoMethods";
 
-const Input = ({ variant = "outlined", type = "text", name, data, label, required = true, error, onChange, ...rest }) => {
+const Input = ({ variant = "outlined", type = "text", name, data, label, required = true, error, onChange,rows,multiline=false, ...rest }) => {
   return (
     <Grid item xs={12}>
       <TextField
@@ -19,28 +19,20 @@ const Input = ({ variant = "outlined", type = "text", name, data, label, require
         onChange={onChange}
         fullWidth
         autoComplete="off"
+        rows={rows}
+        multiline={multiline}
         sx={{ 
           backgroundColor: '#1F2937', // Set your desired background color here
           '& .MuiInputBase-input': {
             color: 'white', // Set input text color
           },
           '& .MuiInputLabel-root': {
-            color: '#B2B2B2', // Set label text color
+            color: '#B2B2B2', // Set label text color 
           },
           '& .MuiFormHelperText-root': {
-            color: 'white', // Set helper text color
+            color: '#B2B2B2', // Set helper text color
           },
-          '& .MuiOutlinedInput-root': {
-            '& fieldset': {
-              borderColor: 'gray', // Border color when not focused
-            },
-            '&:hover fieldset': {
-              borderColor: 'darkgray', // Border color on hover
-            },
-            '&.Mui-focused fieldset': {
-              borderColor: 'darkgray', // Border color when focused
-            },
-          },
+          
           
         }}
         {...rest}

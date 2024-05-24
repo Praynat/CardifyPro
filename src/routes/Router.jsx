@@ -19,7 +19,7 @@ import AddCardPage from '../Cards/Pages/AddCardPage';
 import EditCardPage from '../Cards/Pages/EditCardPage';
 import MyCardsPage from '../Cards/Pages/MyCardsPage';
 import FavoritesPage from '../Cards/Pages/FavoritesPage';
-import ContactPage from '../Pages/ContactPage';
+import ContactPage from '../contact/Pages/ContactPage';
 import SearchPage from '../layout/header/topNavBar/right-navigation/Search/SearchPage';
 import HomePage from '../Pages/HomePage';
 

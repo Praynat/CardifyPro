@@ -6,10 +6,13 @@ import { login, signup } from "../services/usersApiService";
 import { useCallback } from "react";
 import ROUTES from "../../routes/routesModel";
 import normalizeUser from "../helpers/normalization/normalizeUser";
+import { useSnack } from "../../providers/SnackbarProvider";
 
 const useUsers=()=> {
     const [isLoading, setIsLoading] = useState();
     const [error, setError] = useState(null);
+    const setSnack = useSnack();
+
 
     const {  setToken, setUser }=useMyUser();
     const navigate = useNavigate();
@@ -53,7 +56,12 @@ const useUsers=()=> {
         },
         [handleLogin]
       );
-return{isLoading, error, handleLogin, handleLogout, handleSignup }
+      
+      const handleContact =useCallback(() => {
+        setSnack("success", "Message sent successfully");
+        
+      }, [setSnack]); 
+return{isLoading, error, handleLogin, handleLogout, handleSignup,handleContact }
 }
 export default useUsers
 
