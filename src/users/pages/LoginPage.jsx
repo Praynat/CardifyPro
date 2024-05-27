@@ -9,7 +9,6 @@ import Input from "../../forms/components/Input";
 import { useMyUser } from "../providers/UserProvider";
 import { Navigate } from "react-router-dom";
 import useUsers from "../hooks/useUsers";
-import { useSnack } from "../../providers/SnackbarProvider";
 import { Box, Typography } from "@mui/material";
 import NavItem from "../../routes/components/NavItem";
 
@@ -19,16 +18,10 @@ export default function LoginPage() {
     useForm(initialLoginForm, loginSchema, handleLogin);
 
     const {user}=useMyUser();
-    const setSnack = useSnack();
     if (user) return (
     <Navigate to={ROUTES.ROOT} replace/>)
 
-    const onFormSubmit = () => {
-      onSubmit();
-      setTimeout(() => {
-        setSnack("success","Login successful");        
-      }, 1000);
-    };
+    
   return (
     
       <Container
@@ -43,7 +36,7 @@ export default function LoginPage() {
           title="Login to Your Account"
           styles={{ maxWidth: "450px" }}
           to={ROUTES.ROOT}
-          onSubmit={onFormSubmit}
+          onSubmit={onSubmit}
           onReset={handleReset}
           validateForm={validateForm}
         >

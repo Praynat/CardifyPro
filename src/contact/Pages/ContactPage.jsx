@@ -19,8 +19,7 @@ export default function ContactPage() {
 
     const {user}=useMyUser();
     const setSnack = useSnack();
-    if (user) return (
-    <Navigate to={ROUTES.ROOT} replace/>)
+    
 
     const onFormSubmit = () => {
       onSubmit();

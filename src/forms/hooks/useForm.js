@@ -18,7 +18,6 @@ export default function useForm(initialForm, schema, handleSubmit) {
     const name = event.target.name;
     const value = event.target.value;
     const errorMessage = validateProperty(name, value);
-
     if (errorMessage) {
       setErrors((prev) => ({ ...prev, [name]: errorMessage }));
     } else {
@@ -30,6 +29,7 @@ export default function useForm(initialForm, schema, handleSubmit) {
     }
 
     setData((prev) => ({ ...prev, [name]: value }));
+    console.log(`Validating field: ${name}, Value: ${value}, Error: ${errorMessage}`); // Line Added
   }, [validateProperty]);
 
   const handleReset = useCallback(() => {
@@ -37,16 +37,23 @@ export default function useForm(initialForm, schema, handleSubmit) {
     setErrors({});
   }, [initialForm]);
 
-  const validateForm = useCallback(() => {
+ const validateForm = useCallback(() => {
     const schemaForValidate = Joi.object(schema);
     const { error } = schemaForValidate.validate(data);
-    return !error;
+    console.log(error);
+    if (error) return false;
+    return true;
   }, [data, schema]);
 
-  const onSubmit = useCallback(() => {
-    handleSubmit(data);
-    setSnack()
-  }, [data, handleSubmit,setSnack]);
+  const onSubmit = useCallback((e) => {
+    e.preventDefault(); 
+    if (validateForm()) {
+      handleSubmit(data);
+      setSnack("success", "Submitted successfully");
+    } else {
+      setSnack("error", "Form validation failed");
+    }
+  }, [data, handleSubmit, setSnack, validateForm]);
 
   return useMemo(() => ({
     data,

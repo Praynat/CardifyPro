@@ -11,8 +11,7 @@ export default function SignupForm({
   title,
   errors,
   data,
-  onInputChange,
-  setData,
+  onChange,
 }) {
   return (
     <Form
@@ -29,38 +28,39 @@ export default function SignupForm({
             name="first"
             label="First Name"
             error={errors.first}
-            onChange={onInputChange}
+            onChange={onChange}
             data={data}
           />
         </Grid>
         
-        <Grid item xs={12} sm={4}>
-          <Input
-            name="last"
-            label="Last Name"
-            error={errors.last}
-            onChange={onInputChange}
-            data={data}
-          />
-        </Grid>
         <Grid item xs={12} sm={3}>
           <Input
             name="middle"
             label="Middle Name"
             error={errors.middle}
-            onChange={onInputChange}
+            onChange={onChange}
             data={data}
             required={false}
           />
         </Grid>
 
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={4}>
+          <Input
+            name="last"
+            label="Last Name"
+            error={errors.last}
+            onChange={onChange}
+            data={data}
+          />
+        </Grid>
+
+        <Grid item xs={12} sm={3}>
           <Input
             name="phone"
             label="Phone"
             type="phone"
             error={errors.phone}
-            onChange={onInputChange}
+            onChange={onChange}
             data={data}
           />
         </Grid>
@@ -70,30 +70,20 @@ export default function SignupForm({
             label="Email"
             type="email"
             error={errors.email}
-            onChange={onInputChange}
+            onChange={onChange}
             data={data}
-          />
-        </Grid>
-
-        <Grid item xs={12} sm={9}>
-          <Input
-            name="url"
-            label="Image URL"
-            error={errors.url}
-            onChange={onInputChange}
-            data={data}
-            required={false}
           />
         </Grid>
         <Grid item xs={12} sm={3}>
           <Input
-            name="alt"
-            label="Image Alt"
-            error={errors.alt}
-            onChange={onInputChange}
+            name="password"
+            label="password"
+            type="password"
+            error={errors.password}
+            onChange={onChange}
             data={data}
-            required={false}
-          />
+            sm={6}
+         />
         </Grid>
 
         <Grid item xs={12} sm={5}>
@@ -101,7 +91,7 @@ export default function SignupForm({
             label="Country"
             name="country"
             error={errors.country}
-            onChange={onInputChange}
+            onChange={onChange}
             data={data}
           />
         </Grid>
@@ -110,7 +100,7 @@ export default function SignupForm({
             name="state"
             label="State"
             error={errors.state}
-            onChange={onInputChange}
+            onChange={onChange}
             data={data}
             required={false}
           />
@@ -120,7 +110,7 @@ export default function SignupForm({
             name="city"
             label="City"
             error={errors.city}
-            onChange={onInputChange}
+            onChange={onChange}
             data={data}
           />
         </Grid>
@@ -130,7 +120,7 @@ export default function SignupForm({
             name="street"
             label="Street"
             error={errors.street}
-            onChange={onInputChange}
+            onChange={onChange}
             data={data}
           />
         </Grid>
@@ -140,7 +130,7 @@ export default function SignupForm({
             label="House Number"
             type="number"
             error={errors.houseNumber}
-            onChange={onInputChange}
+            onChange={onChange}
             data={data}
           />
         </Grid>
@@ -149,7 +139,28 @@ export default function SignupForm({
             name="zip"
             label="Zip"
             error={errors.zip}
-            onChange={onInputChange}
+            onChange={onChange}
+            data={data}
+            required={false}
+          />
+        </Grid>
+
+        <Grid item xs={12} sm={9}>
+          <Input
+            name="url"
+            label="Image URL"
+            error={errors.url}
+            onChange={onChange}
+            data={data}
+            required={false}
+          />
+        </Grid>
+        <Grid item xs={12} sm={3}>
+          <Input
+            name="alt"
+            label="Image Alt"
+            error={errors.alt}
+            onChange={onChange}
             data={data}
             required={false}
           />
@@ -157,7 +168,7 @@ export default function SignupForm({
 
         <Grid item xs={12}>
           <FormControlLabel
-            onChange={onInputChange}
+            onChange={onChange}
             name="isBusiness"
             control={<Checkbox value={data.isBusiness} color="primary" sx={{color:"white"}}/>}
             label="Signup as business"

@@ -21,6 +21,8 @@ export default function SignupPage() {
   const {user}=useMyUser();
   
   if (user) return <Navigate to={ROUTES.ROOT} replace/>
+
+  
   return (
     <Container
       sx={{
@@ -38,7 +40,7 @@ export default function SignupPage() {
         title={"register form"}
         errors={errors}
         data={data}
-        onInputChange={handleChange}
+        onChange={handleChange}
       />
       <Box sx={{display:"flex",gap:"20px", alignItems:"baseline"}}>
           <Typography variant="body" color="white" sx={{fontFamily:"Open-Sans",mt:"10px", fontWeight:"100",fontSize:"20px", color:'#B2B2B2'}}>

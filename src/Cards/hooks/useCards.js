@@ -75,10 +75,11 @@ export default function useCards() {
       const data = await getCard(id);
       setCard(data);
       return data;
-    } catch (err) {
+  } catch (err) {
       setError(err.message);
+    }finally {
+      setIsLoading(false);
     }
-    setIsLoading(false);
   }, []);
 
   const handleCreateCard = useCallback(

@@ -18,6 +18,7 @@ const Form = ({
   children,
 }) => {
   const navigate = useNavigate();
+  console.log(validateForm());
 
   return (
     <Box
