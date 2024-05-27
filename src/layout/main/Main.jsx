@@ -8,9 +8,9 @@ export default function Main({children}) {
         flexDirection:"vertical",
         alignItems:"center",
         mt:"68px",
-        minHeight:"85vh",
+       height:"100vh",
         backgroundColor:"#111827",
-        paddingBottom: '68px', // Space for the footer
+        paddingBottom:{xs:"500px",sm:"200px"} , // Space for the footer
         }}>
         {children}
     </Box>
