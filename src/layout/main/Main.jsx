@@ -9,7 +9,8 @@ export default function Main({children}) {
         alignItems:"center",
         mt:"68px",
         minHeight:"85vh",
-        backgroundColor:"#111827"
+        backgroundColor:"#111827",
+        paddingBottom: '68px', // Space for the footer
         }}>
         {children}
     </Box>

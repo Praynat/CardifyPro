@@ -9,6 +9,7 @@ import CustomThemeProvider from './providers/CustomThemeProvider';
 import SnackbarProvider from './providers/SnackbarProvider';
 import { SearchProvider } from './layout/header/topNavBar/right-navigation/Search/Provider/SearchProvider';
 import { ScrollProvider } from './layout/Provider/ScrollProvider';
+import 'leaflet/dist/leaflet.css';
 
 function App() {
   return (
