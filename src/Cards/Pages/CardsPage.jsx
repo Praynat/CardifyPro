@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import { Box, Button, Container, Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import CardsFeedback from "../Components/CardsFeedback";
 import useCards from "../hooks/useCards";
 import AddNewCardButton from "../Components/AddNewCardButton";

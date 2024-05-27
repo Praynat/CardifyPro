@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useMyUser } from "../providers/UserProvider";
 import { useNavigate } from "react-router-dom";
 import { getUser, removeToken, setTokenInLocalStorage } from "../services/localStorageService";
-import { getAllUsersData, login, signup } from "../services/usersApiService";
+import { login, signup } from "../services/usersApiService";
 import { useCallback } from "react";
 import ROUTES from "../../routes/routesModel";
 import normalizeUser from "../helpers/normalization/normalizeUser";

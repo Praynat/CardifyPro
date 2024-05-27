@@ -1,11 +1,9 @@
 import React from "react";
 import useUsers from "../../users/hooks/useUsers";
 import useForm from "../../forms/hooks/useForm";
-import { useMyUser } from "../../users/providers/UserProvider";
 import { useSnack } from "../../providers/SnackbarProvider";
-import {  Navigate } from "react-router-dom";
 import ROUTES from "../../routes/routesModel";
-import { Container, TextField} from "@mui/material";
+import { Container} from "@mui/material";
 import Form from "../../forms/components/Form";
 import Input from "../../forms/components/Input";
 import initialContactUsForm from "../helpers/initialContactUsForm";
@@ -17,7 +15,6 @@ export default function ContactPage() {
   const { data, errors, handleChange, handleReset, validateForm, onSubmit } =
     useForm(initialContactUsForm, contactSchema, handleContact);
 
-    const {user}=useMyUser();
     const setSnack = useSnack();
     
 

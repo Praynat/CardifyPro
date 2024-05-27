@@ -134,7 +134,7 @@ export default function useCards() {
         setSnack("error", error.message);
       }
     },
-    [setSnack]
+    [setSnack] 
   );
 
   return {
@@ -149,6 +149,6 @@ export default function useCards() {
     handleCreateCard,
     handleUpdateCard,
     getAllMyCards,
-    getFavCards
+    getFavCards,
   };
 }
