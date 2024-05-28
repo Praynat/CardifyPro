@@ -32,7 +32,20 @@ const Input = ({ variant = "outlined", type = "text", name, data, label, require
           '& .MuiFormHelperText-root': {
             color: '#B2B2B2', // Set helper text color
           },
-          
+          '& .MuiOutlinedInput-root': {
+            '& fieldset': {
+              borderColor: '#8e8e8e', // Set default border color
+            },
+            '&:hover fieldset': {
+              borderColor: '#D1D1D1', // Set border color on hover
+            },
+            '&.Mui-focused fieldset': {
+              borderColor: '#3B82F6', // Set border color when focused
+            },
+            '&.Mui-error fieldset': {
+              borderColor: '#FF0000', // Set border color when error
+            },
+          },
           
         }}
         {...rest}

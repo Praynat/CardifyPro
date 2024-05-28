@@ -3,6 +3,7 @@ import React, { useEffect} from 'react'
 import { Box, Typography } from '@mui/material';
 import CardsFeedback from '../Components/CardsFeedback';
 import useCards from '../hooks/useCards';
+import AddNewCardButton from '../Components/AddNewCardButton';
 
 export default function MyCardsPage() {
     const { cards,error,isLoading, getAllMyCards,handleCardDelete,handleCardLike} = useCards();
@@ -26,6 +27,7 @@ export default function MyCardsPage() {
         handleCardLike={handleCardLike}
         
         /> 
+        <AddNewCardButton />
     </Box>
     )
 }

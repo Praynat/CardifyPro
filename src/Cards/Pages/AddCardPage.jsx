@@ -28,7 +28,7 @@ export default function AddCardPage() {
       }}
     >
       <CardForm
-        title="add card"
+        title="Create your business card"
         onSubmit={onSubmit}
         onReset={handleReset}
         errors={errors}

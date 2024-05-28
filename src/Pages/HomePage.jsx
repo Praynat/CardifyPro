@@ -4,6 +4,9 @@ import { useScroll } from "../layout/Provider/ScrollProvider";
 import CardsFeedback from "../Cards/Components/CardsFeedback";
 import useCards from "../Cards/hooks/useCards";
 import AddNewCardButton from "../Cards/Components/AddNewCardButton";
+import { useMyUser } from "../users/providers/UserProvider";
+import { Navigate, useNavigate } from "react-router-dom";
+import ROUTES from "../routes/routesModel";
 
 const styles = {
   container: {
@@ -44,6 +47,15 @@ const styles = {
 export default function HomePage() {
   const { cards, error, isLoading, getAllCards, handleCardDelete, handleCardLike } = useCards();
   const { galleryRef, handleScrollToRef } = useScroll();
+  const {user}=useMyUser();
+  const navigate= useNavigate();
+  const handleCreate=()=>{
+    if (user) {
+      navigate(ROUTES.CREATE_CARD)
+    } else {
+      navigate(ROUTES.LOGIN)
+    }
+  };
 
   useEffect(() => {
     getAllCards();
@@ -60,7 +72,7 @@ export default function HomePage() {
 
       <Box sx={styles.buttonContainer}>
         <Button variant="contained" sx={styles.button} onClick={handleScrollToRef}>Explore</Button>
-        <Button variant="contained" sx={styles.button}>Create</Button>
+        <Button variant="contained" sx={styles.button} onClick={handleCreate}>Create</Button>
       </Box>
 
       <div id="Gallery" ref={galleryRef} style={styles.gallery}>

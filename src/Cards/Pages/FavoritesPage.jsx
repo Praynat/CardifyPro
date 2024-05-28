@@ -4,6 +4,7 @@ import { Box, Typography } from '@mui/material';
 import CardsFeedback from '../Components/CardsFeedback';
 import useCards from '../hooks/useCards';
 import { useMyUser } from '../../users/providers/UserProvider';
+import AddNewCardButton from '../Components/AddNewCardButton';
 
 export default function Favorites() {
     const { cards,error,isLoading,handleCardDelete,handleCardLike,getFavCards} = useCards();
@@ -29,6 +30,7 @@ export default function Favorites() {
         handleCardDelete={handleCardDelete}
         handleCardLike={handleCardLike}
         /> 
+        <AddNewCardButton />
     </Box>
     )
 }

@@ -1,11 +1,13 @@
-import { Box, Button, Container, Grid, Typography } from '@mui/material';
 import React, { useEffect } from 'react';
+import { Box, Button, Container, Grid, IconButton, Typography } from '@mui/material';
+import { Edit, Delete, Phone, Favorite } from '@mui/icons-material';
 import { useParams } from 'react-router-dom';
 import useCards from '../hooks/useCards';
 import Spinner from '../../Sandbox/Components/Spinner';
 import Error from '../../Sandbox/Components/Error';
 import UseCapitalize from '../../hooks/UseCapitalize';
 import MapComponent from '../../map/components/MapComponent';
+import AddNewCardButton from '../Components/AddNewCardButton';
 
 const { capitalizeFirstLetter, capitalizeAllFirstLetter } = UseCapitalize();
 
@@ -61,7 +63,6 @@ const styles = {
     fontFamily: "roboto",
     fontWeight: "500",
     fontSize: "12px",
-    marginTop: "25px",
     color: 'white',
   },
   imagebox: {
@@ -79,7 +80,13 @@ const styles = {
   },
   imageAlign: {
     display: "flex",
-    justifyContent: { xs: "center", sm: "left" }
+    justifyContent: { xs: "center", sm: "left" },
+    position: "relative"
+  },
+  iconButtons: {
+    display: "flex",
+    justifyContent:{xs:"center",sm:"start"},
+    gap: "2vh"
   },
   textAlign: {
     display: "flex",
@@ -142,6 +149,20 @@ export default function CardsPageDetails() {
             <Typography sx={styles.text}>
               <span style={styles.boldText}>Address:</span> {`${card.address.houseNumber} ${card.address.street}, ${card.address.city}, ${card.address.country}`}
             </Typography>
+            <Grid sx={styles.iconButtons}>
+              <IconButton color='primary' sx={{scale:"0.8" }}>
+                <Edit />
+              </IconButton>
+              <IconButton sx={{ color: 'orange',scale:"0.8" }}>
+                <Delete />
+              </IconButton>
+              <IconButton sx={{ color: 'green',scale:"0.8" }}>
+                <Phone />
+              </IconButton>
+              <IconButton sx={{ color: 'red',scale:"0.8" }}>
+                <Favorite />
+              </IconButton>
+            </Grid>
             <Box sx={styles.buttonContainer}>
               <Button variant="contained" href={card.web} sx={styles.button}>Visit Website</Button>
             </Box>
@@ -156,15 +177,16 @@ export default function CardsPageDetails() {
             />
           </Box>
         </Grid>
-        <Grid item xs={12} order={{ xs: 3, sm: 3 }} sx={styles.mapAlign} >
-        <Typography variant="h1" sx={styles.header}>
-              Location
-            </Typography>
+        <Grid item xs={12} order={{ xs: 3, sm: 3 }} sx={styles.mapAlign}>
+          <Typography variant="h1" sx={styles.header}>
+            Location
+          </Typography>
           <Box sx={styles.mapContainer}>
             <MapComponent address={card.address} />
           </Box>
         </Grid>
       </Grid>
+      <AddNewCardButton />
     </Container>
   );
 }
