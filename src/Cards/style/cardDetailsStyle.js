@@ -73,7 +73,8 @@ const detailStyles = {
     iconButtons: {
       display: "flex",
       justifyContent: { xs: "center", sm: "start" },
-      gap: "2vh"
+      gap: "2vh",
+      mt:"20px"
     },
     textAlign: {
       display: "flex",

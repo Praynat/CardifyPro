@@ -72,16 +72,16 @@ export default function CardsPageDetails() {
               <span style={detailStyles.boldText}>Address:</span> {`${card.address.houseNumber} ${card.address.street}, ${card.address.city}, ${card.address.country}`}
             </Typography>
             <Grid sx={detailStyles.iconButtons}>
-              <IconButton sx={{color:"white"}} onClick={() => handleCardEdit(card._id)}>
+              <IconButton sx={{color:"grey",scale:"0.8" }} onClick={() => handleCardEdit(card._id)}>
                 <Edit />
               </IconButton>
-              <IconButton sx={{color:"grey"}} onClick={() => handleCardDelete(card._id)}>
+              <IconButton sx={{color:"grey",scale:"0.8" }} onClick={() => handleCardDelete(card._id)}>
                 <Delete />
               </IconButton>
-              <IconButton sx={{ color: 'green', scale:"0.8" }}>
+              <IconButton sx={{ color: 'grey', scale:"0.8" }}>
                 <Phone />
               </IconButton>
-              <IconButton sx={{color: liked ? "red" : "white"}} onClick={handleThisCardLike}>
+              <IconButton sx={{color: liked ? "red" : "grey"}} onClick={handleThisCardLike}>
                 <Favorite />
               </IconButton>
             </Grid>
