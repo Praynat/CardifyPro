@@ -1,175 +1,97 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Button, Container, Grid, IconButton, Typography } from '@mui/material';
 import { Edit, Delete, Phone, Favorite } from '@mui/icons-material';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import useCards from '../hooks/useCards';
 import Spinner from '../../Sandbox/Components/Spinner';
 import Error from '../../Sandbox/Components/Error';
 import UseCapitalize from '../../hooks/UseCapitalize';
 import MapComponent from '../../map/components/MapComponent';
 import AddNewCardButton from '../Components/AddNewCardButton';
+import ROUTES from '../../routes/routesModel';
+import { useMyUser } from '../../users/providers/UserProvider';
+import detailStyles from '../style/cardDetailsStyle';
 
 const { capitalizeFirstLetter, capitalizeAllFirstLetter } = UseCapitalize();
 
-const styles = {
-  container: {
-    width: "80vw",
-    height: "100vh",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "start",
-    mt: "68px",
-    overflow:"none"
-  },
-  header: {
-    fontFamily: "roboto",
-    fontWeight: "550",
-    fontSize: "30px",
-    marginBottom: "5px",
-    color: 'white',
-    textAlign: { xs: 'center', sm: 'left' },
-  },
-  subHeader: {
-    fontFamily: "roboto",
-    fontWeight: "100",
-    fontSize: "20px",
-    marginBottom: "20px",
-    marginLeft: "2px",
-    color: '#9CA3AF',
-    textAlign: { xs: 'center', sm: 'left' },
-  },
-  text: {
-    fontFamily: "roboto",
-    fontWeight: "100",
-    fontSize: "12px",
-    marginBottom: "5px",
-    color: '#F0F0F0',
-    textAlign: { xs: 'center', sm: 'left' },
-    width: "auto"
-  },
-  boldText: {
-    fontWeight: "500",
-    fontSize: "12px",
-    color: 'white',
-  },
-  buttonContainer: {
-    width: '100%',
-    display: "flex",
-    justifyContent: { xs: 'center', sm: 'flex-start' },
-    mt: "25px",
-  },
-  button: {
-    fontFamily: "roboto",
-    fontWeight: "500",
-    fontSize: "12px",
-    color: 'white',
-  },
-  imagebox: {
-    height: "35vh",
-    width: { xs: '85%', sm: '30vw' },
-    backgroundColor: "white",
-    borderRadius: "10px",
-    border: "solid white"
-  },
-  textbox: {
-    display: "inline-block",
-    width: "auto",
-    alignSelf: "right",
-    margin: "auto"
-  },
-  imageAlign: {
-    display: "flex",
-    justifyContent: { xs: "center", sm: "left" },
-    position: "relative"
-  },
-  iconButtons: {
-    display: "flex",
-    justifyContent:{xs:"center",sm:"start"},
-    gap: "2vh"
-  },
-  textAlign: {
-    display: "flex",
-    justifyContent: { xs: "center", sm: "flex-end" }
-  },
-  mapAlign: {
-    display: "flex",
-    flexDirection:"column",
-    justifyContent: "center",
-    alignItems:"center",
-    marginTop:"20px"
-  },
-  mapContainer: {
-    height: '45vh',
-    width: '90%',
-    borderRadius: '10px',
-    overflow: 'hidden',
-    marginTop: '20px',
-    zIndex: 0,
-    border:"solid #F0F0F0",
-    opacity:"0.9",
-    ':hover': {
-      opacity:"0.95"
-    },
-  }
-};
+
 
 export default function CardsPageDetails() {
   const { id } = useParams();
-  const { card, error, isLoading, getCardById } = useCards();
+  const { card, error, isLoading, getCardById, handleCardDelete, handleCardLike } = useCards();
+  const [liked, setLiked] = useState(false);
+  const navigate = useNavigate();
+  const { user } = useMyUser();
+
+  const handleThisCardLike = () => {
+    setLiked((prevLiked) => !prevLiked);
+    handleCardLike(card._id);
+  };
 
   useEffect(() => {
     getCardById(id);
   }, [id, getCardById]);
 
+  const handleCardEdit = (id) => {
+    navigate(ROUTES.EDIT_CARD + "/" + id);
+  };
+
+  useEffect(() => {
+    if (user && card && card.likes.includes(user._id)) {
+      setLiked(true);
+    }
+  }, [user, card]);
+
   if (isLoading) return <Spinner />;
   if (error) return <Error errorMessage={error} />;
+  if (!card) return null; // Add this line to ensure card is not null
+
   console.log(card);
 
   return (
-    <Container sx={styles.container}>
+    <Container sx={detailStyles.container}>
       <Grid container spacing={5}>
-        <Grid item xs={12} sm={6} spacing={20} order={{ xs: 2, sm: 1 }} direction={{ xs: 'column', sm: 'row' }} sx={styles.textAlign}>
-          <Box sx={styles.textbox}>
-            <Typography variant="h1" sx={styles.header}>
+        <Grid item xs={12} sm={6} spacing={20} order={{ xs: 2, sm: 1 }} direction={{ xs: 'column', sm: 'row' }} sx={detailStyles.textAlign}>
+          <Box sx={detailStyles.textbox}>
+            <Typography variant="h1" sx={detailStyles.header}>
               {capitalizeAllFirstLetter(card.title)}
             </Typography>
-            <Typography sx={styles.subHeader}>
+            <Typography sx={detailStyles.subHeader}>
               {capitalizeAllFirstLetter(card.subtitle)}
             </Typography>
-            <Typography sx={styles.text}>
-              <span style={styles.boldText}>Business description:</span> {capitalizeFirstLetter(card.description)}
+            <Typography sx={detailStyles.text}>
+              <span style={detailStyles.boldText}>Business description:</span> {capitalizeFirstLetter(card.description)}
             </Typography>
-            <Typography sx={styles.text}>
-              <span style={styles.boldText}>Telephone:</span> {card.phone}
+            <Typography sx={detailStyles.text}>
+              <span style={detailStyles.boldText}>Telephone:</span> {card.phone}
             </Typography>
-            <Typography sx={styles.text}>
-              <span style={styles.boldText}>Email:</span> {card.email}
+            <Typography sx={detailStyles.text}>
+              <span style={detailStyles.boldText}>Email:</span> {card.email}
             </Typography>
-            <Typography sx={styles.text}>
-              <span style={styles.boldText}>Address:</span> {`${card.address.houseNumber} ${card.address.street}, ${card.address.city}, ${card.address.country}`}
+            <Typography sx={detailStyles.text}>
+              <span style={detailStyles.boldText}>Address:</span> {`${card.address.houseNumber} ${card.address.street}, ${card.address.city}, ${card.address.country}`}
             </Typography>
-            <Grid sx={styles.iconButtons}>
-              <IconButton color='primary' sx={{scale:"0.8" }}>
+            <Grid sx={detailStyles.iconButtons}>
+              <IconButton sx={{color:"white"}} onClick={() => handleCardEdit(card._id)}>
                 <Edit />
               </IconButton>
-              <IconButton sx={{ color: 'orange',scale:"0.8" }}>
+              <IconButton sx={{color:"grey"}} onClick={() => handleCardDelete(card._id)}>
                 <Delete />
               </IconButton>
-              <IconButton sx={{ color: 'green',scale:"0.8" }}>
+              <IconButton sx={{ color: 'green', scale:"0.8" }}>
                 <Phone />
               </IconButton>
-              <IconButton sx={{ color: 'red',scale:"0.8" }}>
+              <IconButton sx={{color: liked ? "red" : "white"}} onClick={handleThisCardLike}>
                 <Favorite />
               </IconButton>
             </Grid>
-            <Box sx={styles.buttonContainer}>
-              <Button variant="contained" href={card.web} sx={styles.button}>Visit Website</Button>
+            <Box sx={detailStyles.buttonContainer}>
+              <Button variant="contained" href={card.web} sx={detailStyles.button}>Visit Website</Button>
             </Box>
           </Box>
         </Grid>
-        <Grid item xs={12} sm={6} order={{ xs: 1, sm: 2 }} sx={styles.imageAlign}>
-          <Box sx={styles.imagebox}>
+        <Grid item xs={12} sm={6} order={{ xs: 1, sm: 2 }} sx={detailStyles.imageAlign}>
+          <Box sx={detailStyles.imagebox}>
             <img
               src={card.image.url}
               alt="Description"
@@ -177,11 +99,11 @@ export default function CardsPageDetails() {
             />
           </Box>
         </Grid>
-        <Grid item xs={12} order={{ xs: 3, sm: 3 }} sx={styles.mapAlign}>
-          <Typography variant="h1" sx={styles.header}>
+        <Grid item xs={12} order={{ xs: 3, sm: 3 }} sx={detailStyles.mapAlign}>
+          <Typography variant="h1" sx={detailStyles.header}>
             Location
           </Typography>
-          <Box sx={styles.mapContainer}>
+          <Box sx={detailStyles.mapContainer}>
             <MapComponent address={card.address} />
           </Box>
         </Grid>
