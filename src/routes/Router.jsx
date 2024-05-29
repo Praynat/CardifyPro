@@ -22,6 +22,7 @@ import FavoritesPage from '../Cards/Pages/FavoritesPage';
 import ContactPage from '../contact/Pages/ContactPage';
 import SearchPage from '../layout/header/topNavBar/right-navigation/Search/SearchPage';
 import HomePage from '../Pages/HomePage';
+import ProfilePage from '../users/pages/ProfilePage';
 
 export default function Router() {
   return (
@@ -32,6 +33,7 @@ export default function Router() {
         <Route path={ROUTES.MY_CARDS} element={<MyCardsPage/>}/>
         <Route path={ROUTES.FAV_CARDS} element={<FavoritesPage/>}/>
         <Route path={ROUTES.SEARCH_CARDS} element={<SearchPage/>}/>
+        <Route path={ROUTES.USER_PROFILE} element={<ProfilePage/>}/>
         <Route path={ROUTES.ABOUT} element={<AboutPage/>}/>
         <Route path={ROUTES.CONTACT} element={<ContactPage/>}/>
         <Route path={ROUTES.SIGNUP} element={<SignUpPage/>}/>   

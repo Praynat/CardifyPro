@@ -5,14 +5,19 @@ import IconButton from "@mui/material/IconButton";
 import Avatar from "@mui/material/Avatar";
 import { useMenu } from "../Menu/MenuProvider";
 import { Box, Typography } from "@mui/material";
+import { useMyUser } from "../../../../users/providers/UserProvider";
+import UseCapitalize from "../../../../hooks/UseCapitalize";
 
 
 const Logged = () => {
   const setOpen = useMenu();
+  const {userData}=useMyUser();
+  const {capitalizeFirstLetter}=UseCapitalize();
+  const userName= capitalizeFirstLetter(userData.name.first)
 
   return (
     <Box sx={{display:"flex", alignItems:"center"}}>
-      <Typography variant="body1" color="white">Welcome User</Typography>
+      <Typography variant="body1" color="white">Welcome {userName}</Typography>
       <Tooltip title="Open settings">
         <IconButton
           sx={{ p: 0, display: "inline-flex", marginLeft: 2 }}

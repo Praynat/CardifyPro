@@ -12,9 +12,6 @@ export const SearchProvider = ({ children }) => {
     getAllCards();
   }, [getAllCards]);
 
-  useEffect(() => {
-    console.log('Cards fetched:', cards);
-  }, [cards]);
 
   const filteredAllCards = useMemo(() => {
     return cards.filter((card) =>

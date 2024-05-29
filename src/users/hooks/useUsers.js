@@ -87,6 +87,9 @@ const useUsers=()=> {
         setSnack("success", "Message sent successfully");
         
       }, [setSnack]); 
+
+
+      
 return{isLoading, error, handleLogin, handleLogout, handleSignup,handleContact }
 }
 export default useUsers

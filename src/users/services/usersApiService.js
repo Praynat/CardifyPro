@@ -32,13 +32,9 @@ export const getUserData = async (id) => {
 };
 
 export const getAllUsersData = async () => {
-  const adminToken ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBhZTc1OWRiMzgxM2E2NTAyZmMyZmMiLCJpc0J1c2luZXNzIjp0cnVlLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2OTg4NDI5NTJ9.En62ry5Gu9FMBAvxyltv0eRYhpJIJs_aW06QAtxXRck";
+ 
   try {
-    const { data } = await axios.get(apiUrl,{
-      headers: {
-        Authorization: `Bearer ${adminToken}`
-      }
-    });
+    const { data } = await axios.get(apiUrl);
     return data;
   } catch (err) {
     throw new Error(err.message);
