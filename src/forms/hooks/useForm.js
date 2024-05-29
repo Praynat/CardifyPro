@@ -29,7 +29,6 @@ export default function useForm(initialForm, schema, handleSubmit) {
     }
 
     setData((prev) => ({ ...prev, [name]: value }));
-    console.log(`Validating field: ${name}, Value: ${value}, Error: ${errorMessage}`); // Line Added
   }, [validateProperty]);
 
   const handleReset = useCallback(() => {
@@ -40,7 +39,6 @@ export default function useForm(initialForm, schema, handleSubmit) {
  const validateForm = useCallback(() => {
     const schemaForValidate = Joi.object(schema);
     const { error } = schemaForValidate.validate(data);
-    console.log(error);
     if (error) return false;
     return true;
   }, [data, schema]);

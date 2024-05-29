@@ -5,7 +5,7 @@ import CardsFeedback from "../Cards/Components/CardsFeedback";
 import useCards from "../Cards/hooks/useCards";
 import AddNewCardButton from "../Cards/Components/AddNewCardButton";
 import { useMyUser } from "../users/providers/UserProvider";
-import { Navigate, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import ROUTES from "../routes/routesModel";
 
 const styles = {
@@ -20,6 +20,7 @@ const styles = {
     fontWeight: "600",
     fontSize: "66px",
     color: 'white',
+    textAlign:{xs:"center",sm:"left"},
   },
   subHeader: {
     fontFamily: "Open-Sans",
@@ -27,6 +28,7 @@ const styles = {
     fontWeight: "100",
     fontSize: "20px",
     color: '#F0F0F0',
+    textAlign:{xs:"center",sm:"left"},
   },
   buttonContainer: {
     display: "flex",

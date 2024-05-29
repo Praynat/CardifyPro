@@ -2,6 +2,7 @@ import { useCallback, useState } from "react";
 import {
   changeLikeStatus,
   createCard,
+  deleteCard,
   editCard,
   getCard,
   getCards,
@@ -53,7 +54,7 @@ export default function useCards() {
       setError(err.message);
     }
     setIsLoading(false);
-  }, []);
+  }, [user]);
 
   const getAllMyCards = useCallback(async () => {
     try {
@@ -92,7 +93,7 @@ export default function useCards() {
         setCard(card);
         setSnack("success", "A new business card has been created");
         setTimeout(() => {
-          navigate(ROUTES.ROOT);
+          navigate(ROUTES.MY_CARDS);
         }, 1000);
       } catch (error) {
         setError(error.message);
@@ -111,7 +112,7 @@ export default function useCards() {
         setCard(card);
         setSnack("success", "The business card has been successfully updated");
         setTimeout(() => {
-          navigate(ROUTES.ROOT);
+          navigate(-1);
         }, 1000);
       } catch (error) {
         setError(error.message);
@@ -121,14 +122,34 @@ export default function useCards() {
     [setSnack, navigate]
   );
 
-  const handleCardDelete = useCallback((id) => {
-    console.log("you deleted card no" + id);
-  }, []);
+  const handleCardDelete = useCallback((cardId) => {
+    const confirmed = window.confirm("Are you sure you want to delete this card?");
+    if (confirmed) {
+      
+        setIsLoading(true);
+  
+        try {
+          const card = deleteCard(cardId);
+          setSnack("success", "The business card has been successfully deleted");
+          setCard(card)
+          setTimeout(() => {
+           getAllMyCards();
+          }, 1000);
+        } catch (error) {
+          setError(error.message);
+        }finally{
+
+          setIsLoading(false);
+        }
+    }
+
+    }, [setSnack,getAllMyCards]);
 
   const handleCardLike = useCallback(
     async (id) => {
       try {
         const cards = await changeLikeStatus(id);
+        setCards(cards)
         setSnack("success", "Card like status updated");
       } catch (error) {
         setSnack("error", error.message);

@@ -13,10 +13,10 @@ export default function AddNewCardButton() {
       sx={{
         position: "fixed",
         bottom: 75,
-        right: 16,
+        right:{xs:7,sm:16},
         backgroundColor:"#438EFF",
         color:"white",
-        scale:"0.9",
+        scale:{xs:"0.6",sm:"0.9"},
         border:"black"
       }}
       onClick={() => {
