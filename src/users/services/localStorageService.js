@@ -1,6 +1,6 @@
 import { jwtDecode } from "jwt-decode";
 
-const Token="my token"
+const Token="mytoken"
 
 
 export const setTokenInLocalStorage = (encryptedToken)=>{

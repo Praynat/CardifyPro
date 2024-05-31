@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useMyUser } from "../providers/UserProvider";
 import { useNavigate } from "react-router-dom";
 import { getUser, removeToken, setTokenInLocalStorage } from "../services/localStorageService";
-import { login, signup } from "../services/usersApiService";
+import { updateUserData, login, signup } from "../services/usersApiService";
 import { useCallback } from "react";
 import ROUTES from "../../routes/routesModel";
 import normalizeUser from "../helpers/normalization/normalizeUser";
@@ -66,31 +66,45 @@ const useUsers=()=> {
       //   [handleLogin, setSnack, setIsLoading, setError]
       // );
       
-      const handleSignup = useCallback(
-        async (userFromClient) => {
-          setIsLoading(true);
-          try {
-            const normalizedUser = normalizeUser(userFromClient);
-            await signup(normalizedUser);
-            await handleLogin({
-              email: userFromClient.email,
-              password: userFromClient.password,
-            });
-          } catch (error) {
-            setError(error.message);
-          }
-          setIsLoading(false);
-        },
-        [handleLogin]
-      );
-      const handleContact =useCallback(() => {
-        setSnack("success", "Message sent successfully");
-        
-      }, [setSnack]); 
+    const handleSignup = useCallback(
+      async (userFromClient) => {
+        setIsLoading(true);
+        try {
+          const normalizedUser = normalizeUser(userFromClient);
+          await signup(normalizedUser);
+          await handleLogin({
+            email: userFromClient.email,
+            password: userFromClient.password,
+          });
+        } catch (error) {
+          setError(error.message);
+        }
+        setIsLoading(false);
+      },
+      [handleLogin]
+    );
+    const handleContact =useCallback(() => {
+      setSnack("success", "Message sent successfully");
+      
+    }, [setSnack]); 
+
+    const handleUserUpdate=useCallback(
+      async (userFromClient,id) => {
+        setIsLoading(true);
+        try {
+          const normalizedUser = normalizeUser(userFromClient);
+          await updateUserData(id,normalizedUser);
+        } catch (error) {
+          setError(error.message);
+        }
+        setIsLoading(false);
+      },
+      []
+    );
 
 
       
-return{isLoading, error, handleLogin, handleLogout, handleSignup,handleContact }
+return{isLoading, error, handleLogin, handleLogout, handleSignup,handleContact,handleUserUpdate }
 }
 export default useUsers
 

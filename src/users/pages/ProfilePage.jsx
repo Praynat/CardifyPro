@@ -1,23 +1,24 @@
 import React from 'react';
-import { Avatar, Grid, Typography, Box, Card } from '@mui/material';
+import { Avatar, Grid, Typography, Box, Card, CircularProgress } from '@mui/material';
+import { useMyUser } from '../providers/UserProvider';
+import UseCapitalize from '../../hooks/UseCapitalize';
 
 const ProfilePage = () => {
-  const user = {
-    name: 'John Doe',
-    id: '123456',
-    address: '1234 Street Name, City, Country',
-    email: 'john.doe@example.com',
-    phone: '123-456-7890',
-    isBusinessUser: true,
-    imageUrl: 'https://via.placeholder.com/150'
-  };
+  const { userData, loading } = useMyUser();
+  const { capitalizeFirstLetter } = UseCapitalize();
 
   const styles = {
     card: {
       padding: 2,
       maxWidth: 400,
       margin: 'auto',
-      backgroundColor: "#111827",
+      backgroundColor: "#1F2937",
+      borderRadius: "10px",
+      border: "solid #9CA3AF",
+      ':hover': {
+        boxShadow: 6, // Adds a shadow effect on hover
+        borderColor: '#D1D5DB' // Changes border color on hover
+      },
       color: 'white',
       textAlign: 'center'
     },
@@ -29,61 +30,76 @@ const ProfilePage = () => {
     title: {
       fontWeight: 'bold',
     },
-    name: {
+    nameStyle: {
       fontSize: '1.5rem',
       fontWeight: 'bold',
     },
     image: {
       height: 150,
       width: 150,
-      borderRadius: user.imageUrl ? 0 : '50%',
+      borderRadius: userData?.image?.url ? 0 : '50%',
+    },
+    span: {
+      fontWeight: 'normal',
+      color: "#9CA3AF",
     }
   };
+
+  if (loading) {
+    return <CircularProgress />;
+  }
+
+  if (!userData) {
+    return <Typography variant="h6" color="error">Failed to load user data</Typography>;
+  }
 
   return (
     <Card sx={styles.card}>
       <Grid container spacing={2}>
         <Grid item xs={12} container justifyContent="center">
           <Avatar sx={styles.avatar}>
-            {user.name[0]}
+            {capitalizeFirstLetter(userData.name.first[0])}
           </Avatar>
         </Grid>
         <Grid item xs={12} container justifyContent="center">
-          <Typography variant="h1" sx={styles.name}>
-            {user.name}
+          <Typography variant="h1" sx={styles.nameStyle}>
+            {capitalizeFirstLetter(userData.name.first)} {capitalizeFirstLetter(userData.name.last)}
           </Typography>
         </Grid>
         <Grid item xs={12} container justifyContent="center">
           <Typography variant="subtitle1" sx={styles.title}>
-            ID:  <span style={{ fontWeight: 'normal', color:"#F0F0F0" }}>{user.id}</span>
+            ID: <span style={styles.span}>{userData._id}</span>
           </Typography>
         </Grid>
         <Grid item xs={12}>
           <Typography sx={styles.title}>
-            Address: <span style={{ fontWeight: 'normal', color:"#F0F0F0" }}>{user.address}</span>
+            Address:{" "}
+            <span style={styles.span}>
+              {userData.address.houseNumber} {userData.address.street} {userData.address.city} {userData.address.country} {userData.address.zip}
+            </span>
           </Typography>
         </Grid>
         <Grid item xs={12}>
           <Typography sx={styles.title}>
-            Email: <span style={{ fontWeight: 'normal', color:"#F0F0F0" }}>{user.email}</span>
+            Email: <span style={styles.span}>{userData.email}</span>
           </Typography>
         </Grid>
         <Grid item xs={12}>
           <Typography sx={styles.title}>
-            Phone: <span style={{ fontWeight: 'normal', color:"#F0F0F0" }}>{user.phone}</span>
+            Phone: <span style={styles.span}>{userData.phone}</span>
           </Typography>
         </Grid>
         <Grid item xs={12}>
           <Typography sx={styles.title}>
-            Business User: <span style={{ fontWeight: 'normal', color:"#F0F0F0" }}>{user.isBusinessUser ? 'Yes' : 'No'}</span>
+            Business user: <span style={styles.span}>{userData.isBusiness ? 'Yes' : 'No'}</span>
           </Typography>
         </Grid>
         <Grid item xs={12} container justifyContent="center">
-          {user.imageUrl && (
+          {userData.image.url && (
             <Box
               component="img"
               sx={styles.image}
-              src={user.imageUrl}
+              src={userData.image.url}
               alt="Profile"
             />
           )}

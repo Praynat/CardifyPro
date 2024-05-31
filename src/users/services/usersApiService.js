@@ -1,4 +1,5 @@
 import axios from "axios";
+import normalizeUser from "../helpers/normalization/normalizeUser";
 
 
 const apiUrl="https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users"
@@ -25,6 +26,15 @@ export const signup = async (normalizedUser) => {
 export const getUserData = async (id) => {
   try {
     const { data } = await axios.get(`${apiUrl}/${id}`);
+    return data;
+  } catch (err) {
+    throw new Error(err.message);
+  }
+};
+
+export const updateUserData = async (id,normalizedUser) => {
+  try {
+    const { data } = await axios.put(`${apiUrl}/${id}`,normalizedUser);
     return data;
   } catch (err) {
     throw new Error(err.message);
