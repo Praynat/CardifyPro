@@ -1,5 +1,4 @@
 import axios from "axios";
-import normalizeUser from "../helpers/normalization/normalizeUser";
 
 
 const apiUrl="https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users"

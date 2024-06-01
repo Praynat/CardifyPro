@@ -5,10 +5,12 @@ import CardsFeedback from '../Components/CardsFeedback';
 import useCards from '../hooks/useCards';
 import { useMyUser } from '../../users/providers/UserProvider';
 import AddNewCardButton from '../Components/AddNewCardButton';
+import { useDarkLightTheme } from "../../theme/ThemeProvider";
 
 export default function Favorites() {
     const { cards,error,isLoading,handleCardDelete,handleCardLike,getFavCards} = useCards();
     const { user } = useMyUser();
+    const { theme } = useDarkLightTheme();
 
   useEffect(()=>{
     getFavCards();
@@ -20,7 +22,7 @@ export default function Favorites() {
 
   return (
     <Box sx={{width:"100%",display:"flex",flexDirection:"column", alignItems:"center",height:"70vh"}}>
-      <Typography variant="h1" sx={{fontFamily:"roboto", fontWeight:"550",fontSize:"48px", marginBottom:"30px", color:'white'}}>
+      <Typography variant="h1" sx={{fontFamily:"roboto", fontWeight:"550",fontSize:"48px", marginBottom:"30px", color:theme.strongTextColor}}>
           Favorite Cards
       </Typography>
         <CardsFeedback 

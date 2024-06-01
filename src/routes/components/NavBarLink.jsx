@@ -6,7 +6,8 @@ export default function NavBarLink({to,children,sx}) {
     <>
     <Link to={to} 
       onClick= {() => window.scrollTo(0, 0)}
-      style={{ textdecoration:"none" ,...sx={sx}}}>
+      style={{ textDecoration: "none", ...sx={sx} }}
+      >
     {children}
     </Link>
     </>

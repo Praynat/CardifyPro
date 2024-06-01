@@ -41,7 +41,7 @@ export default function ContactPage() {
           to={ROUTES.ROOT}
           onSubmit={onFormSubmit}
           onReset={handleReset}
-          validateForm={validateForm}
+          validateForm={validateForm()}
         >
           <Input
             label="Name"

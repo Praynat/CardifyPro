@@ -6,11 +6,13 @@ import { useMenu } from "../Menu/MenuProvider";
 import { Box, Typography, CircularProgress } from "@mui/material";
 import { useMyUser } from "../../../../users/providers/UserProvider";
 import UseCapitalize from "../../../../hooks/UseCapitalize";
+import { useDarkLightTheme } from "../../../../theme/ThemeProvider";
 
 const Logged = () => {
   const  setOpen  = useMenu();
   const { userData, loading } = useMyUser();
   const { capitalizeFirstLetter } = UseCapitalize();
+  const { theme } = useDarkLightTheme();
 
   if (loading) {
     return <CircularProgress />;
@@ -24,7 +26,7 @@ const Logged = () => {
 
   return (
     <Box sx={{ display: "flex", alignItems: "center" }}>
-      <Typography variant="body1" color="white">Welcome {userName}</Typography>
+      <Typography variant="body1" color={theme.strongTextColor}>Welcome {userName}</Typography>
       <Tooltip title="Open settings">
         <IconButton
           sx={{ p: 0, display: "inline-flex", marginLeft: 2 }}

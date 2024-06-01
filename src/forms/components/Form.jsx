@@ -5,6 +5,7 @@ import FormButton from "./FormButton";
 import { useNavigate } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import LoopIcon from "@mui/icons-material/Loop";
+import { useDarkLightTheme } from "../../theme/ThemeProvider";
 
 const Form = ({
   title = "",
@@ -17,6 +18,7 @@ const Form = ({
   styles = {},
   children,
 }) => {
+  const { theme } = useDarkLightTheme();
   const navigate = useNavigate();
 
   return (
@@ -28,11 +30,11 @@ const Form = ({
       autoComplete="off"
       noValidate
     >
-      <Typography align="center" variant="h5" component="h1" mb={6} sx={{fontFamily:"roboto", fontWeight:"500",fontSize:"30px", color:'white'}}>
+      <Typography align="center" variant="h5" component="h1" mb={6} sx={{fontFamily:"roboto", fontWeight:"500",fontSize:"30px", color:theme.strongTextColor}}>
         {title.charAt(0).toUpperCase() + title.slice(1)}
       </Typography>
 
-      <Grid container spacing={spacing}>
+      <Grid container spacing={spacing} sx={{mb:"0px"}}>
         {children}
       </Grid>
 
@@ -41,7 +43,7 @@ const Form = ({
           <FormButton
             node="Submit"
             onClick={onSubmit}
-            disabled={!validateForm()}
+            disabled={!validateForm}
             size="large"
           />
         </Grid>
@@ -60,6 +62,7 @@ const Form = ({
             variant="outlined"
             component="div"
             onClick={onReset}
+            disabled={validateForm}
           />
         </Grid>
         

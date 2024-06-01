@@ -38,7 +38,7 @@ export default function LoginPage() {
           to={ROUTES.ROOT}
           onSubmit={onSubmit}
           onReset={handleReset}
-          validateForm={validateForm}
+          validateForm={validateForm()}
         >
           <Input
             label="email"

@@ -2,49 +2,13 @@ import React from 'react';
 import { Avatar, Grid, Typography, Box, Card, CircularProgress } from '@mui/material';
 import { useMyUser } from '../providers/UserProvider';
 import UseCapitalize from '../../hooks/UseCapitalize';
+import useProfileStyles from '../../style/profilePageStyle';
 
 const ProfilePage = () => {
   const { userData, loading } = useMyUser();
   const { capitalizeFirstLetter } = UseCapitalize();
 
-  const styles = {
-    card: {
-      padding: 2,
-      maxWidth: 400,
-      margin: 'auto',
-      backgroundColor: "#1F2937",
-      borderRadius: "10px",
-      border: "solid #9CA3AF",
-      ':hover': {
-        boxShadow: 6, // Adds a shadow effect on hover
-        borderColor: '#D1D5DB' // Changes border color on hover
-      },
-      color: 'white',
-      textAlign: 'center'
-    },
-    avatar: {
-      backgroundColor: 'primary.main',
-      width: 56,
-      height: 56,
-    },
-    title: {
-      fontWeight: 'bold',
-    },
-    nameStyle: {
-      fontSize: '1.5rem',
-      fontWeight: 'bold',
-    },
-    image: {
-      height: 150,
-      width: 150,
-      borderRadius: userData?.image?.url ? 0 : '50%',
-    },
-    span: {
-      fontWeight: 'normal',
-      color: "#9CA3AF",
-    }
-  };
-
+  const styles = useProfileStyles();
   if (loading) {
     return <CircularProgress />;
   }

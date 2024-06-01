@@ -7,6 +7,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useMyUser } from "../../../users/providers/UserProvider";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../../../routes/routesModel";
+import { useDarkLightTheme } from "../../../theme/ThemeProvider";
 
 export default function CardActionBar({
   handleCardLike,
@@ -18,6 +19,7 @@ export default function CardActionBar({
   const { user } = useMyUser();
   const navigate = useNavigate();
   const [liked, setLiked]= useState(false)
+  const { theme } = useDarkLightTheme();
 
 
   const handleThisCardLike = () => {
@@ -39,10 +41,10 @@ export default function CardActionBar({
       <Box>
         {user && (user.isAdmin || user._id === cardUserId) ? (
           <>
-            <IconButton sx={{color:"white"}} onClick={() => handleCardDelete(cardId)}>
+            <IconButton sx={{color:theme.strongTextColor}} onClick={() => handleCardDelete(cardId)}>
               <DeleteIcon />
             </IconButton>
-            <IconButton sx={{color:"white"}} onClick={() => handleCardEdit(cardId)}>
+            <IconButton sx={{color:theme.strongTextColor}} onClick={() => handleCardEdit(cardId)}>
               <ModeEditIcon />
             </IconButton>
           </>
@@ -50,10 +52,10 @@ export default function CardActionBar({
       </Box>
 
       <Box>
-        <IconButton sx={{color:"white"}} >
+        <IconButton sx={{color:theme.strongTextColor}} >
           <CallIcon />
         </IconButton>
-        <IconButton sx={{color: liked? "red":"white"}} onClick={() => handleThisCardLike()}>
+        <IconButton sx={{color: liked? "red":theme.strongTextColor}} onClick={() => handleThisCardLike()}>
           <FavoriteIcon />
         </IconButton>
       </Box>

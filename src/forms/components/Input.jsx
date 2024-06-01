@@ -2,8 +2,10 @@ import React from "react";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import { makeFirstLetterCapital } from "../utils/algoMethods";
+import { useDarkLightTheme } from "../../theme/ThemeProvider";
 
 const Input = ({ variant = "outlined", type = "text", name, data, label, required = true, error, onChange,rows,multiline=false, ...rest }) => {
+  const { theme } = useDarkLightTheme();
   return (
     <Grid item xs={12}>
       <TextField
@@ -22,9 +24,9 @@ const Input = ({ variant = "outlined", type = "text", name, data, label, require
         rows={rows}
         multiline={multiline}
         sx={{ 
-          backgroundColor: '#1F2937', // Set your desired background color here
+          backgroundColor: theme.formInputColor, // Set your desired background color here
           '& .MuiInputBase-input': {
-            color: 'white', // Set input text color
+            color: theme.strongTextColor, // Set input text color
           },
           '& .MuiInputLabel-root': {
             color: '#B2B2B2', // Set label text color 
@@ -37,7 +39,7 @@ const Input = ({ variant = "outlined", type = "text", name, data, label, require
               borderColor: '#8e8e8e', // Set default border color
             },
             '&:hover fieldset': {
-              borderColor: '#D1D1D1', // Set border color on hover
+              borderColor: theme.cardHoverBorderColor, // Set border color on hover
             },
             '&.Mui-focused fieldset': {
               borderColor: '#3B82F6', // Set border color when focused

@@ -1,4 +1,9 @@
-const detailStyles = {
+import { useDarkLightTheme } from "../../theme/ThemeProvider";
+
+const useDetailStyles = () => {
+  const { theme } = useDarkLightTheme();
+  
+  return {
     container: {
       width: "80vw",
       height: "100vh",
@@ -7,14 +12,14 @@ const detailStyles = {
       alignItems: "center",
       justifyContent: "start",
       mt: "68px",
-      overflow: "none"
+      overflow: "hidden"
     },
     header: {
       fontFamily: "roboto",
       fontWeight: "550",
       fontSize: "30px",
       marginBottom: "5px",
-      color: 'white',
+      color: theme.strongTextColor,
       textAlign: { xs: 'center', sm: 'left' },
     },
     subHeader: {
@@ -23,7 +28,7 @@ const detailStyles = {
       fontSize: "20px",
       marginBottom: "20px",
       marginLeft: "2px",
-      color: '#9CA3AF',
+      color: theme.weakTextTColor,
       textAlign: { xs: 'center', sm: 'left' },
     },
     text: {
@@ -31,14 +36,14 @@ const detailStyles = {
       fontWeight: "100",
       fontSize: "12px",
       marginBottom: "5px",
-      color: '#F0F0F0',
+      color: theme.midTextColor,
       textAlign: { xs: 'center', sm: 'left' },
       width: "auto"
     },
     boldText: {
       fontWeight: "500",
       fontSize: "12px",
-      color: 'white',
+      color: theme.strongTextColor,
     },
     buttonContainer: {
       width: '100%',
@@ -56,8 +61,9 @@ const detailStyles = {
       height: "35vh",
       width: { xs: '85%', sm: '30vw' },
       backgroundColor: "white",
-      borderRadius: "10px",
-      border: "solid white"
+      borderRadius: "15px",
+      border: "solid",
+      borderColor:theme.cardDetailBorder
     },
     textbox: {
       display: "inline-block",
@@ -94,12 +100,14 @@ const detailStyles = {
       overflow: 'hidden',
       marginTop: '20px',
       zIndex: 0,
-      border: "solid #F0F0F0",
+      border: "solid",
+      borderColor:theme.cardDetailBorder,
       opacity: "0.9",
       ':hover': {
         opacity: "0.95"
       },
     }
   };
+  };
   
-  export default detailStyles;
+  export default useDetailStyles;

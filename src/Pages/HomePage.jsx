@@ -7,50 +7,20 @@ import AddNewCardButton from "../Cards/Components/AddNewCardButton";
 import { useMyUser } from "../users/providers/UserProvider";
 import {useNavigate } from "react-router-dom";
 import ROUTES from "../routes/routesModel";
+import { useDarkLightTheme } from "../theme/ThemeProvider";
+import homePageStyle from "../style/homePageStyle";
 
-const styles = {
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  header: {
-    fontFamily: "roboto",
-    mt: "120px",
-    fontWeight: "600",
-    fontSize: "66px",
-    color: 'white',
-    textAlign:{xs:"center",sm:"left"},
-  },
-  subHeader: {
-    fontFamily: "Open-Sans",
-    mt: "10px",
-    fontWeight: "100",
-    fontSize: "20px",
-    color: '#F0F0F0',
-    textAlign:{xs:"center",sm:"left"},
-  },
-  buttonContainer: {
-    display: "flex",
-    gap: "20px",
-    mt: "50px",
-    mb: "68px",
-  },
-  button: {
-    backgroundColor: 'linear-gradient(135deg, #2F80ED, #B2FFDA)',
-    borderRadius: "16px",
-  },
-  gallery: {
-    paddingTop: "68px",
-    marginTop: "-68px",
-  },
-};
+
 
 export default function HomePage() {
   const { cards, error, isLoading, getAllCards, handleCardDelete, handleCardLike } = useCards();
   const { galleryRef, handleScrollToRef } = useScroll();
   const {user}=useMyUser();
   const navigate= useNavigate();
+  
+  const { theme } = useDarkLightTheme();
+  const styles = homePageStyle(theme);
+
   const handleCreate=()=>{
     if (user) {
       navigate(ROUTES.CREATE_CARD)
@@ -58,11 +28,11 @@ export default function HomePage() {
       navigate(ROUTES.LOGIN)
     }
   };
-
+  
   useEffect(() => {
     getAllCards();
   }, [getAllCards]);
-
+  
   return (
     <Container sx={styles.container}>
       <Typography variant="h1" sx={styles.header}>

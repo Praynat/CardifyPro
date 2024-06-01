@@ -10,7 +10,8 @@ import MapComponent from '../../map/components/MapComponent';
 import AddNewCardButton from '../Components/AddNewCardButton';
 import ROUTES from '../../routes/routesModel';
 import { useMyUser } from '../../users/providers/UserProvider';
-import detailStyles from '../style/cardDetailsStyle';
+import useDetailStyles from '../style/cardDetailsStyle';
+
 
 const { capitalizeFirstLetter, capitalizeAllFirstLetter } = UseCapitalize();
 
@@ -22,6 +23,8 @@ export default function CardsPageDetails() {
   const [liked, setLiked] = useState(false);
   const navigate = useNavigate();
   const { user } = useMyUser();
+
+  const styles = useDetailStyles();
 
   const handleThisCardLike = () => {
     setLiked((prevLiked) => !prevLiked);
@@ -44,34 +47,33 @@ export default function CardsPageDetails() {
 
   if (isLoading) return <Spinner />;
   if (error) return <Error errorMessage={error} />;
-  if (!card) return null; // Add this line to ensure card is not null
+  if (!card) return null; 
 
-  console.log(card);
 
   return (
-    <Container sx={detailStyles.container}>
+    <Container sx={styles.container}>
       <Grid container spacing={5}>
-        <Grid item xs={12} sm={6} spacing={20} order={{ xs: 2, sm: 1 }} direction={{ xs: 'column', sm: 'row' }} sx={detailStyles.textAlign}>
-          <Box sx={detailStyles.textbox}>
-            <Typography variant="h1" sx={detailStyles.header}>
+        <Grid item xs={12} sm={6} spacing={20} order={{ xs: 2, sm: 1 }} direction={{ xs: 'column', sm: 'row' }} sx={styles.textAlign}>
+          <Box sx={styles.textbox}>
+            <Typography variant="h1" sx={styles.header}>
               {capitalizeAllFirstLetter(card.title)}
             </Typography>
-            <Typography sx={detailStyles.subHeader}>
+            <Typography sx={styles.subHeader}>
               {capitalizeAllFirstLetter(card.subtitle)}
             </Typography>
-            <Typography sx={detailStyles.text}>
-              <span style={detailStyles.boldText}>Business description:</span> {capitalizeFirstLetter(card.description)}
+            <Typography sx={styles.text}>
+              <span style={styles.boldText}>Business description:</span> {capitalizeFirstLetter(card.description)}
             </Typography>
-            <Typography sx={detailStyles.text}>
-              <span style={detailStyles.boldText}>Telephone:</span> {card.phone}
+            <Typography sx={styles.text}>
+              <span style={styles.boldText}>Telephone:</span> {card.phone}
             </Typography>
-            <Typography sx={detailStyles.text}>
-              <span style={detailStyles.boldText}>Email:</span> {card.email}
+            <Typography sx={styles.text}>
+              <span style={styles.boldText}>Email:</span> {card.email}
             </Typography>
-            <Typography sx={detailStyles.text}>
-              <span style={detailStyles.boldText}>Address:</span> {`${card.address.houseNumber} ${card.address.street}, ${card.address.city}, ${card.address.country}`}
+            <Typography sx={styles.text}>
+              <span style={styles.boldText}>Address:</span> {`${card.address.houseNumber} ${card.address.street}, ${card.address.city}, ${card.address.country}`}
             </Typography>
-            <Grid sx={detailStyles.iconButtons}>
+            <Grid sx={styles.iconButtons}>
               <IconButton sx={{color:"grey",scale:"0.8" }} onClick={() => handleCardEdit(card._id)}>
                 <Edit />
               </IconButton>
@@ -85,13 +87,13 @@ export default function CardsPageDetails() {
                 <Favorite />
               </IconButton>
             </Grid>
-            <Box sx={detailStyles.buttonContainer}>
-              <Button variant="contained" href={card.web} sx={detailStyles.button}>Visit Website</Button>
+            <Box sx={styles.buttonContainer}>
+              <Button variant="contained" href={card.web} sx={styles.button}>Visit Website</Button>
             </Box>
           </Box>
         </Grid>
-        <Grid item xs={12} sm={6} order={{ xs: 1, sm: 2 }} sx={detailStyles.imageAlign}>
-          <Box sx={detailStyles.imagebox}>
+        <Grid item xs={12} sm={6} order={{ xs: 1, sm: 2 }} sx={styles.imageAlign}>
+          <Box sx={styles.imagebox}>
             <img
               src={card.image.url}
               alt="Description"
@@ -99,11 +101,11 @@ export default function CardsPageDetails() {
             />
           </Box>
         </Grid>
-        <Grid item xs={12} order={{ xs: 3, sm: 3 }} sx={detailStyles.mapAlign}>
-          <Typography variant="h1" sx={detailStyles.header}>
+        <Grid item xs={12} order={{ xs: 3, sm: 3 }} sx={styles.mapAlign}>
+          <Typography variant="h1" sx={styles.header}>
             Location
           </Typography>
-          <Box sx={detailStyles.mapContainer}>
+          <Box sx={styles.mapContainer}>
             <MapComponent address={card.address} />
           </Box>
         </Grid>

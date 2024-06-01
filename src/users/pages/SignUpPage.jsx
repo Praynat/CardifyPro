@@ -21,7 +21,6 @@ export default function SignupPage() {
   const {user}=useMyUser();
   
   if (user) return <Navigate to={ROUTES.ROOT} replace/>
-
   
   return (
     <Container
@@ -30,14 +29,15 @@ export default function SignupPage() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        flexDirection:"column"
+        flexDirection:"column",
+        mt:"68px"
       }}
     >
       <SignupForm
         onSubmit={onSubmit}
         onReset={handleReset}
-        validateForm={validateForm}
-        title={"register form"}
+        validateForm={validateForm()}
+        title={"Create New Account"}
         errors={errors}
         data={data}
         onChange={handleChange}

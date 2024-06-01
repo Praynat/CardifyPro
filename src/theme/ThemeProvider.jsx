@@ -1,18 +1,21 @@
-// theme.js
-export const lightTheme = {
-    backgroundColor: '#111827',
-    secondaryColor:"",
-    highlightColor:"",
-    actionColor:"",
-    textColor: '#000000',
-    titleColor: '#000000',
-    titleFontWeight: 'bold',
+import React, { createContext, useState, useContext } from 'react';
+import { lightTheme, darkTheme } from './theme';
+
+const ThemeContext = createContext();
+
+export const DarkLightThemeProvider = ({ children }) => {
+  const [theme, setTheme] = useState(darkTheme);
+  const [isToggleDark, setIsToggleDark] = useState(true);
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === darkTheme ? lightTheme : darkTheme));
+    setIsToggleDark(theme===darkTheme ? false: true)
   };
-  
-  export const darkTheme = {
-    backgroundColor: '#000000',
-    textColor: '#ffffff',
-    titleColor: '#ffffff',
-    titleFontWeight: 'bold',
-  };
-  
+
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme,isToggleDark,darkTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+
+export const useDarkLightTheme = () => useContext(ThemeContext);

@@ -148,8 +148,12 @@ export default function useCards() {
   const handleCardLike = useCallback(
     async (id) => {
       try {
-        const cards = await changeLikeStatus(id);
-        setCards(cards)
+        const updatedCard = await changeLikeStatus(id);
+        setCards((prevCards) =>
+          prevCards.map((card) =>
+            card._id === updatedCard._id ? updatedCard : card
+          )
+        );
         setSnack("success", "Card like status updated");
       } catch (error) {
         setSnack("error", error.message);

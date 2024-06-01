@@ -5,10 +5,7 @@ import signupSchema from "../models/signupSchema";
 import Container from "@mui/material/Container";
 import SignupForm from "../components/SignupForm";
 import { useMyUser } from "../providers/UserProvider";
-import ROUTES from "../../routes/routesModel";
 import useUsers from "../hooks/useUsers";
-import { Box, Typography } from "@mui/material";
-import NavItem from "../../routes/components/NavItem";
 import { getUserData } from "../services/usersApiService";
 import denormalizeUser from "../helpers/normalization/denormalizeUser";
 
@@ -16,7 +13,6 @@ export default function EditProfilePage() {
   const { handleUserUpdate } = useUsers();
   const { user } = useMyUser();
 
-  // Move hook calls before any conditional logic
   const userId = user ? user._id : null;
 
   const {
@@ -43,7 +39,7 @@ export default function EditProfilePage() {
   }, [userId, setData]);
 
   if (!user) {
-    return <div>Loading...</div>; // You can replace this with a proper loading indicator
+    return <div>Loading...</div>; 
   }
 
   return (
@@ -52,13 +48,14 @@ export default function EditProfilePage() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        flexDirection: "column"
+        flexDirection: "column",
+        mt:"68px"
       }}
     >
       <SignupForm
         onSubmit={onSubmit}
         onReset={handleReset}
-        validateForm={validateForm}
+        validateForm={validateForm()}
         title={"Change user info"}
         errors={errors}
         data={data}

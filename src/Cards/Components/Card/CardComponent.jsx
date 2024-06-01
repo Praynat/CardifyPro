@@ -10,32 +10,43 @@ import CardBodyComponent from "./CardBodyComponent";
 import CardActionbar from "./CardActionBar";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../../../routes/routesModel";
+import { useDarkLightTheme } from "../../../theme/ThemeProvider";
 
+
+
+
+export default function CardComponent({card,handleCardDelete,handleCardLike,likes}) {
+const navigate = useNavigate();
+const { theme } = useDarkLightTheme();
 const cardStyles = {
   card: {
     width: 250,
     m: 2,
     padding: "10px",
-    backgroundColor: "#1F2937",
+    backgroundColor:theme.secondaryColor,
     borderRadius: "10px",
-    border: "solid #9CA3AF",
+    border: "solid",
+    borderColor:theme.cardBorderColor,
     ':hover': {
-      boxShadow: 6, // Adds a shadow effect on hover
-      borderColor: '#D1D5DB' // Changes border color on hover
+      backgroundColor:theme.cardHoverBgColor,
+      
+      borderColor: theme.cardHoverBorderColor // Changes border color on hover
     },
   },
-};
-
-export default function CardComponent({card,handleCardDelete,handleCardLike,likes}) {
-const navigate = useNavigate();
+  cardActionArea: {
+    '&:hover': {
+        backgroundColor: theme.cardHoverBgColor
+    }
+}
+}
 
   return (
   <Card sx={cardStyles.card}>
-    <CardActionArea onClick={()=> navigate(ROUTES.CARD_INFO + "/" + card._id)}>
+    <CardActionArea onClick={()=> navigate(ROUTES.CARD_INFO + "/" + card._id)} sx={cardStyles.cardActionArea}>
       <CardImageComponent image={card.image}/>
       <CardBodyComponent title={card.title} subtitle={card.subtitle} phone={card.phone} adress ={card.address} cardNumber={card.bizNumber}/>
-    </CardActionArea>
 
+      </CardActionArea>
     <CardActionbar 
     handleCardDelete={handleCardDelete}
     handleCardLike={handleCardLike}

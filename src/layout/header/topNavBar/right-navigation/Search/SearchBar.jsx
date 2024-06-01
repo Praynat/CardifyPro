@@ -1,8 +1,9 @@
-import { Box, IconButton, Input, NativeSelect } from '@mui/material';
+import { Box, IconButton,InputBase, NativeSelect } from '@mui/material';
 import React from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router-dom';
 import { useMySearch } from './Provider/SearchProvider';
+import { useDarkLightTheme } from '../../../../../theme/ThemeProvider';
 
 export default function SearchBar() {
   const navigate=useNavigate();
@@ -21,6 +22,7 @@ export default function SearchBar() {
     event.preventDefault(); 
     navigate("/search")
   };
+  const { theme } = useDarkLightTheme();
 
   return (
     <Box
@@ -28,22 +30,24 @@ export default function SearchBar() {
         display: "flex",
         height: "35px",
         width: "auto",
-        backgroundColor: "#374151",
+        backgroundColor: theme.highlightColor,
         border: "solid black 0.5px",
         borderRadius: "30px",
         alignItems: "center",
         justifyContent: "center",
+        overflow:"hidden"
       }}
     >
       <form onSubmit={handleFormSubmit}>
-        <Input
+        <InputBase
           type="text"
           onChange={handleSearchInput}
           placeholder="Search"
-          sx={{ color: "white", ml: "20px" }}
+          sx={{ color: theme.strongTextColor, ml: "20px" }}
+          inputProps={{ style: { textDecoration: 'none' } }}
         />
         <IconButton type="submit">
-          <SearchIcon sx={{ color: "white" }} />
+          <SearchIcon sx={{ color: theme.actionColor }} />
         </IconButton>
         <NativeSelect
           defaultValue={"All Cards"}
@@ -51,8 +55,9 @@ export default function SearchBar() {
           inputProps={{
             name: 'Categories',
             id: 'uncontrolled-native',
-            style: { color: "grey", backgroundColor: "#374151" },
+            style: { color: "grey", backgroundColor: theme.highlightColor, textDecoration:"none" },
           }}
+          sx={{ border: 'none', outline: 'none', textDecoration:"none" }}
         >
           <option value={"All Cards"}>All Cards</option>
           <option value={"My Cards"}>My Cards</option>

@@ -4,6 +4,7 @@ import CardsFeedback from "../Components/CardsFeedback";
 import useCards from "../hooks/useCards";
 import AddNewCardButton from "../Components/AddNewCardButton";
 import { useScroll } from "../../layout/Provider/ScrollProvider";
+import { useDarkLightTheme } from "../../theme/ThemeProvider";
 
 
 export default function CardsPage() {
@@ -11,6 +12,7 @@ export default function CardsPage() {
   const { cards,error,isLoading, getAllCards,handleCardDelete,handleCardLike} = useCards();
 
   const {galleryRef,handleScrollToRef,needToScroll,setNeedToScroll}= useScroll();
+  const { theme } = useDarkLightTheme();
 
   
   useEffect(()=>{
@@ -26,7 +28,7 @@ export default function CardsPage() {
   return (
     <Container sx={{display:"flex", flexDirection:"column" ,alignItems:"center",mt:"68px"}}>
 
-<Typography variant="h1" sx={{fontFamily:"roboto", fontWeight:"550",fontSize:"48px", marginBottom:"30px", color:'white'}}>
+<Typography variant="h1" sx={{fontFamily:"roboto", fontWeight:"550",fontSize:"48px", marginBottom:"30px", color:theme.strongTextColor}}>
           Gallery
       </Typography>
 

@@ -3,6 +3,8 @@ import Form from "../../forms/components/Form";
 import ROUTES from "../../routes/routesModel";
 import Input from "../../forms/components/Input";
 import { Grid, FormControlLabel, Checkbox } from "@mui/material";
+import { useDarkLightTheme } from "../../theme/ThemeProvider";
+
 
 export default function SignupForm({
   onSubmit,
@@ -13,6 +15,7 @@ export default function SignupForm({
   data,
   onChange,
 }) {
+  const { theme } = useDarkLightTheme();
   return (
     <Form
       onSubmit={onSubmit}
@@ -170,9 +173,9 @@ export default function SignupForm({
           <FormControlLabel
             onChange={onChange}
             name="isBusiness"
-            control={<Checkbox value={data.isBusiness} color="primary" sx={{color:"white"}}/>}
+            control={<Checkbox value={data.isBusiness} color="primary" sx={{color:theme.strongTextColor}}/>}
             label="Signup as business"
-            sx={{color:"white"}}
+            sx={{color:theme.strongTextColor}}
           />
         </Grid>
       </Grid>
