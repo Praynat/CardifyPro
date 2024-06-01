@@ -30,7 +30,8 @@ export default function EditCardPage() {
   } = useForm(initialCardForm, cardSchema, (newCard) =>
     handleUpdateCard(card._id, newCard)
   );
-  //useEffect - update the form data to this card data
+
+
   useEffect(() => {
     getCardById(id).then((data) => {
       const modelCard = mapCardToModel(data);

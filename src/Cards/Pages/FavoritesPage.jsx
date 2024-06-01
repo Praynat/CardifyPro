@@ -1,6 +1,6 @@
 
 import React, { useEffect, useMemo} from 'react'
-import { Box, Typography } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import CardsFeedback from '../Components/CardsFeedback';
 import useCards from '../hooks/useCards';
 import { useMyUser } from '../../users/providers/UserProvider';
@@ -21,7 +21,7 @@ export default function Favorites() {
   }, [cards, user]);
 
   return (
-    <Box sx={{width:"100%",display:"flex",flexDirection:"column", alignItems:"center",height:"70vh"}}>
+    <Container sx={{display:"flex", flexDirection:"column" ,alignItems:"center",mt:"68px"}}>
       <Typography variant="h1" sx={{fontFamily:"roboto", fontWeight:"550",fontSize:"48px", marginBottom:"30px", color:theme.strongTextColor}}>
           Favorite Cards
       </Typography>
@@ -33,6 +33,6 @@ export default function Favorites() {
         handleCardLike={handleCardLike}
         /> 
         <AddNewCardButton />
-    </Box>
+    </Container>
     )
 }
