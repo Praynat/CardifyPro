@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-Pour intégrer les informations spécifiques à votre projet CardifyPro dans votre README existant, vous pouvez ajouter les nouvelles sections avant ou après la partie générée par Create React App. Voici comment cela pourrait être structuré :
-
----
-
 # CardifyPro
 
 CardifyPro is a platform dedicated to connecting businesses and individuals through innovative card designs. Our mission is to provide a creative space where users can explore and create custom cards that represent their unique brand and personality.
@@ -111,27 +106,27 @@ CardifyPro/
 
 - **Homepage**
   
-  ![Homepage](./path/to/your/screenshots/homepage.png)
+  ![Homepage](../CardifyPro/public/Assets/Images/Readme/CardifyProScreenshotHomePage.png)
 
 - **My Cards**
 
-  ![My Cards](./path/to/your/screenshots/my-cards.png)
+  ![My Cards](../CardifyPro/public/Assets/Images/Readme/)
 
 - **Favorite Cards**
 
-  ![Favorite Cards](./path/to/your/screenshots/favorite-cards.png)
+  ![Favorite Cards](../CardifyPro/public/Assets/Images/Readme/)
 
 - **Search Page**
 
-  ![Search Page](./path/to/your/screenshots/search-page.png)
+  ![Search Page](../CardifyPro/public/Assets/Images/Readme/)
 
 - **Login Page**
 
-  ![Login Page](./path/to/your/screenshots/login-page.png)
+  ![Login Page](../CardifyPro/public/Assets/Images/Readme/)
 
 - **Card Details**
 
-  ![Card Details](./path/to/your/screenshots/card-details.png)
+  ![Card Details](../CardifyPro/public/Assets/Images/Readme/)
 
 ## License
 
