@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Pour intégrer les informations spécifiques à votre projet CardifyPro dans votre README existant, vous pouvez ajouter les nouvelles sections avant ou après la partie générée par Create React App. Voici comment cela pourrait être structuré :
 
 ---
@@ -218,3 +219,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ---
 
 Cela devrait vous permettre de conserver toutes les informations nécessaires, à la fois pour votre projet spécifique et les instructions générales de Create React App. N'oubliez pas d'ajuster les chemins des captures d'écran selon leur emplacement réel dans votre projet.
+=======
+# CardifyPro
+A website to Explore Businesses &amp; Highlight Your Own with Custom Card Creation
+>>>>>>> f803d4988c4e67e86ed2a3d8174378b5f8e507d5

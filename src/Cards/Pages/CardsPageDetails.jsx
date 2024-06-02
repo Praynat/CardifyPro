@@ -3,14 +3,15 @@ import { Box, Button, Container, Grid, IconButton, Typography } from '@mui/mater
 import { Edit, Delete, Phone, Favorite } from '@mui/icons-material';
 import { useNavigate, useParams } from 'react-router-dom';
 import useCards from '../hooks/useCards';
-import Spinner from '../../Sandbox/Components/Spinner';
-import Error from '../../Sandbox/Components/Error';
+
 import UseCapitalize from '../../hooks/UseCapitalize';
 import MapComponent from '../../map/components/MapComponent';
 import AddNewCardButton from '../Components/AddNewCardButton';
 import ROUTES from '../../routes/routesModel';
 import { useMyUser } from '../../users/providers/UserProvider';
 import useDetailStyles from '../style/cardDetailsStyle';
+import Spinner from '../../utilities/Spinner';
+import Error from '../../utilities/Error';
 
 
 const { capitalizeFirstLetter, capitalizeAllFirstLetter } = UseCapitalize();

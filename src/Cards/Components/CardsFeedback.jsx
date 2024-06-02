@@ -1,8 +1,8 @@
 import React from 'react'
-import Spinner from "../../Sandbox/Components/Spinner"
-import Error from "../../Sandbox/Components/Error"
 import { Typography } from '@mui/material'
 import Cards from './Cards'
+import Spinner from '../../utilities/Spinner'
+import Error from '../../utilities/Error'
 
 export default function CardsFeedback({isLoading, cards, error, handleCardDelete, handleCardLike,selected,searchInput}) {
   
