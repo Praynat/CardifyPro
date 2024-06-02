@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import useForm from "../../forms/hooks/useForm";
-import initialSignupForm from "../helpers/initialForms/initialSignupForm";
-import signupSchema from "../models/signupSchema";
 import Container from "@mui/material/Container";
-import SignupForm from "../components/SignupForm";
 import { useMyUser } from "../providers/UserProvider";
 import useUsers from "../hooks/useUsers";
 import { getUserData } from "../services/usersApiService";
 import denormalizeUser from "../helpers/normalization/denormalizeUser";
+import EditUserForm from "../components/EditUserForm";
+import initialEditUserForm from "../helpers/initialForms/initialEditUserForm";
+import editUserSchema from "../models/editUserSchema";
 
 export default function EditProfilePage() {
   const { handleUserUpdate } = useUsers();
@@ -23,7 +23,7 @@ export default function EditProfilePage() {
     validateForm,
     onSubmit,
     setData,
-  } = useForm(initialSignupForm, signupSchema, (newUser) =>
+  } = useForm(initialEditUserForm, editUserSchema, (newUser) =>
     handleUserUpdate(newUser, userId)
   );
 
@@ -52,7 +52,7 @@ export default function EditProfilePage() {
         mt:"68px"
       }}
     >
-      <SignupForm
+      <EditUserForm
         onSubmit={onSubmit}
         onReset={handleReset}
         validateForm={validateForm()}
