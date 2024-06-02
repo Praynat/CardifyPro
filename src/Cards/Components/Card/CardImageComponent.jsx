@@ -16,7 +16,7 @@ export default function CardHeaderComponent({ image }) {
     sx={{borderRadius:"inherit",}}
     onError={({ currentTarget }) => {
       currentTarget.onerror = null; // prevents looping
-      currentTarget.image = defaultImage;
+      currentTarget.src = defaultImage;
     }} />
   );
 }

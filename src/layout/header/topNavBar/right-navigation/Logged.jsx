@@ -25,8 +25,8 @@ const Logged = () => {
   const userName = capitalizeFirstLetter(userData.name.first);
 
   return (
-    <Box sx={{ display: "flex", alignItems: "center" }}>
-      <Typography variant="body1" color={theme.strongTextColor}>Welcome {userName}</Typography>
+    <Box sx={{ display:{ xs: "none", md: "flex" }, alignItems: "center" }}>
+      <Typography variant="body1" color={theme.strongTextColor} sx={{ml:"10px"}}>Welcome {userName}</Typography>
       <Tooltip title="Open settings">
         <IconButton
           sx={{ p: 0, display: "inline-flex", marginLeft: 2 }}

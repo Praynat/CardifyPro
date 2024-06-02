@@ -9,13 +9,13 @@ import { useMenu } from "../Menu/MenuProvider";
 const MoreButton = () => {
   const setOpen = useMenu();
   return (
-    <Box sx={{ display: { xs: "inline-flex", md: "none" } }}>
+    <Box sx={{ display: { xs: "inline-flex", sm: "inline-flex", md:"none" } }}>
       <IconButton
         onClick={() => setOpen(true)}
         size="large"
         color="inherit"
         aria-label="menu"
-        sx={{ display: { xs: "inline-flex", md: "none" } }}
+        sx={{ display: { xs: "inline-flex", sm: "inline-flex" } }}
       >
         <MenuIcon /> 
       </IconButton>

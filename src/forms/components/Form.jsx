@@ -62,7 +62,7 @@ const Form = ({
             variant="outlined"
             component="div"
             onClick={onReset}
-            disabled={validateForm}
+            
           />
         </Grid>
         

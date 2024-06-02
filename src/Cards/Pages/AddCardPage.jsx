@@ -32,7 +32,7 @@ export default function AddCardPage() {
         onSubmit={onSubmit}
         onReset={handleReset}
         errors={errors}
-        validateForm={validateForm}
+        validateForm={validateForm()}
         onInputChange={handleChange}
         data={data}
       />

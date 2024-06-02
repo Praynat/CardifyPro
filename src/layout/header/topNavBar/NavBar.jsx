@@ -12,18 +12,17 @@ export default function NavBar() {
     <MenuProvider>
       <AppBar sx={{position:'fixed !important' ,top:"0 !important", backgroundColor:theme.secondaryColor, height:"68px"}} elevation={1}>
         <Toolbar sx={{justifyContent:"space-between", alignContent:"center"}}>
-          <Grid container 
-                justifyContent="space-between"
-                alignItems="center">
-            <Grid item xs={5} zeroMinWidth >
-              <LeftNavBar noWrap/>
-            </Grid>
-            <Grid item xs={2}>
-              <Logo/>
-            </Grid>
-            <Grid item xs={5} sx={{display:"flex", justifyContent:"flex-end"}}>
-              <RightNavBar/>
-            </Grid>
+
+          <Grid container justifyContent="space-between"alignItems="center">
+              <Grid item  sm={5} zeroMinWidth sx={{overflow:"hidden"}}>
+                <LeftNavBar noWrap/>
+              </Grid>
+              <Grid item xs={4} sm={2}>
+                <Logo/>
+              </Grid>
+              <Grid item  sm={5} sx={{display:"flex", justifyContent:"flex-end"}}>
+                <RightNavBar/>
+              </Grid>
           </Grid>
         </Toolbar>
       </AppBar>

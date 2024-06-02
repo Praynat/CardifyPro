@@ -14,7 +14,7 @@ const NotLogged = () => {
     backgroundColor: location.pathname === route ? theme.highlightColor : theme.secondaryColor,
   });
   return (
-    <Box>
+    <Box sx={{ display:{ xs: "none", md: "flex" }}}>
       
       <NavItem
       buttonSx={getButtonStyle(ROUTES.LOGIN)}
