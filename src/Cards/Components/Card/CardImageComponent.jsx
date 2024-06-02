@@ -5,7 +5,7 @@ import React from "react";
 
 export default function CardHeaderComponent({ image }) {
 
-  const defaultImage="/Assets/Images/Cards/CardsTemp.png"
+  const defaultImage="/CardsTemp.png"
 
   return (
     <CardMedia 
