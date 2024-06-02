@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo } from 'react'
 import CardsFeedback from '../../../../../Cards/Components/CardsFeedback'
 import useCards from '../../../../../Cards/hooks/useCards';
-import { Box, Typography } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import { useMySearch } from './Provider/SearchProvider';
 import { useMyUser } from '../../../../../users/providers/UserProvider';
 import { useDarkLightTheme } from '../../../../../theme/ThemeProvider';
@@ -42,7 +42,7 @@ export default function SearchPage() {
     
 
       return (
-        <Box sx={{display:"flex", flexDirection:"column" ,justifyContent:"start",alignItems:"center",mt:"68px" ,width: "100%", height:"100vh" }}>
+        <Container sx={{display:"flex", flexDirection:"column" ,justifyContent:"start",alignItems:"center",mt:"68px" }}>
           <Typography variant="h1" sx={{fontFamily:"roboto", fontWeight:"550",fontSize:"48px", marginBottom:"30px", color:theme.strongTextColor}}>
           Search Page
           </Typography>
@@ -62,6 +62,6 @@ export default function SearchPage() {
                 No cards with "{searchInput}" were found.
             </Typography>
             )}
-        </Box>
+        </Container>
     );
   }

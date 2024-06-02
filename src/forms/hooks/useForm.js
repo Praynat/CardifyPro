@@ -53,6 +53,12 @@ export default function useForm(initialForm, schema, handleSubmit) {
     }
   }, [data, handleSubmit, setSnack, validateForm]);
 
+  const onContactSubmit = useCallback(() => {
+    setTimeout(() => {
+      setSnack("success","Message Sent");        
+    }, 500);    
+  }, [setSnack]);
+
   return useMemo(() => ({
     data,
     errors,
@@ -61,5 +67,6 @@ export default function useForm(initialForm, schema, handleSubmit) {
     handleReset,
     onSubmit,
     validateForm,
-  }), [data, errors, handleChange, handleReset, onSubmit, validateForm]);
+    onContactSubmit
+  }), [data, errors, handleChange, handleReset, onSubmit, validateForm,onContactSubmit]);
 }

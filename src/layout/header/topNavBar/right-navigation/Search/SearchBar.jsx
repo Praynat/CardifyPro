@@ -4,12 +4,13 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router-dom';
 import { useMySearch } from './Provider/SearchProvider';
 import { useDarkLightTheme } from '../../../../../theme/ThemeProvider';
+import { useMyUser } from '../../../../../users/providers/UserProvider';
 
-export default function SearchBar({ isOpen, onClose }) {
+export default function SearchBar({ isOpen }) {
   const navigate = useNavigate();
   const { setSelected, setSearchInput } = useMySearch();
   const { theme } = useDarkLightTheme();
-
+  const {user}=useMyUser();
   
 
   const handleSelectedOption = (event) => {
@@ -70,8 +71,8 @@ export default function SearchBar({ isOpen, onClose }) {
             sx={{ border: 'none', outline: 'none', textDecoration: "none" }}
           >
             <option value={"All Cards"}>All Cards</option>
-            <option value={"My Cards"}>My Cards</option>
-            <option value={"Favorites"}>Favorites</option>
+            {user&& <option value={"My Cards"}>My Cards</option>}
+            {user&& <option value={"Favorites"}>Favorites</option>}
           </NativeSelect>
         </form>
       </Box>

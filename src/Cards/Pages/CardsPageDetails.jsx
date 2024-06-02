@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Button, Container, Grid, IconButton, Typography } from '@mui/material';
+import { Box, Button, Grid, IconButton, Typography } from '@mui/material';
 import { Edit, Delete, Phone, Favorite } from '@mui/icons-material';
 import { useNavigate, useParams } from 'react-router-dom';
 import useCards from '../hooks/useCards';
@@ -52,10 +52,14 @@ export default function CardsPageDetails() {
 
 
   return (
-    <Container sx={styles.container}>
+    <Grid container sx={styles.container}>
       <Grid container spacing={5}>
         <Grid item xs={12} sm={6} spacing={20} order={{ xs: 2, sm: 1 }} direction={{ xs: 'column', sm: 'row' }} sx={styles.textAlign}>
+
+
           <Box sx={styles.textbox}>
+
+{/* left side text */}
             <Typography variant="h1" sx={styles.header}>
               {capitalizeAllFirstLetter(card.title)}
             </Typography>
@@ -74,6 +78,9 @@ export default function CardsPageDetails() {
             <Typography sx={styles.text}>
               <span style={styles.boldText}>Address:</span> {`${card.address.houseNumber} ${card.address.street}, ${card.address.city}, ${card.address.country}`}
             </Typography>
+
+
+{/* left side buttons */}
             <Grid sx={styles.iconButtons}>
               <IconButton sx={{color:"grey",scale:"0.8" }} onClick={() => handleCardEdit(card._id)}>
                 <Edit />
@@ -88,12 +95,16 @@ export default function CardsPageDetails() {
                 <Favorite />
               </IconButton>
             </Grid>
+
+{/* Left side visit website button */}
             <Box sx={styles.buttonContainer}>
               <Button variant="contained" href={card.web} sx={styles.button}>Visit Website</Button>
             </Box>
           </Box>
         </Grid>
-        <Grid item xs={12} sm={6} order={{ xs: 1, sm: 2 }} sx={styles.imageAlign}>
+
+{/* right side image */}
+        <Grid item xs={12} sm={6} lg={5} order={{ xs: 1, sm: 2 }} sx={styles.imageAlign}>
           <Box sx={styles.imagebox}>
             <img
               src={card.image.url}
@@ -102,6 +113,8 @@ export default function CardsPageDetails() {
             />
           </Box>
         </Grid>
+
+{/* Bottom Map */}
         <Grid item xs={12} order={{ xs: 3, sm: 3 }} sx={styles.mapAlign}>
           <Typography variant="h1" sx={styles.header}>
             Location
@@ -112,6 +125,6 @@ export default function CardsPageDetails() {
         </Grid>
       </Grid>
       <AddNewCardButton />
-    </Container>
+    </Grid>
   );
 }
