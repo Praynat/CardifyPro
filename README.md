@@ -218,3 +218,5 @@ Cela devrait vous permettre de conserver toutes les informations nÃ©cessaires, Ã
 # CardifyPro
 A website to Explore Businesses &amp; Highlight Your Own with Custom Card Creation
 >>>>>>> f803d4988c4e67e86ed2a3d8174378b5f8e507d5
+#   C a r d i f y P r o  
+ 
