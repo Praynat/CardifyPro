@@ -2,7 +2,7 @@
   "name": "cardapp",
   "version": "0.1.0",
   "private": true,
-  "homepage":"https://praynat.github.io/CardifyPro",
+  "homepage": "https://praynat.github.io/CardifyPro",
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
@@ -29,7 +29,7 @@
     "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
