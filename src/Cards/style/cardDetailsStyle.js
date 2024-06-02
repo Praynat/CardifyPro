@@ -5,8 +5,7 @@ const useDetailStyles = () => {
   
   return {
     container: {
-      width: "80vw",
-      height: "100vh",
+      width: "100vw",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
@@ -59,7 +58,8 @@ const useDetailStyles = () => {
     },
     imagebox: {
       height: "35vh",
-      width: { xs: '85%', sm: '30vw' },
+      width: { xs: '75vw', sm: '30vw',md:"30vw" },
+      margin:"auto",
       backgroundColor: "white",
       borderRadius: "15px",
       border: "solid",

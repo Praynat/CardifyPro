@@ -1,7 +1,6 @@
 import React from "react";
 import useUsers from "../../users/hooks/useUsers";
 import useForm from "../../forms/hooks/useForm";
-import { useSnack } from "../../providers/SnackbarProvider";
 import ROUTES from "../../routes/routesModel";
 import { Container} from "@mui/material";
 import Form from "../../forms/components/Form";
@@ -12,17 +11,17 @@ import contactSchema from "../models/contactSchema";
 
 export default function ContactPage() {
   const {handleContact} = useUsers();
-  const { data, errors, handleChange, handleReset, validateForm, onSubmit } =
+  const { data, errors, handleChange, handleReset, validateForm, onContactSubmit } =
     useForm(initialContactUsForm, contactSchema, handleContact);
 
-    const setSnack = useSnack();
     
 
     const onFormSubmit = () => {
-      onSubmit();
-      setTimeout(() => {
-        setSnack("success","Message Sent");        
-      }, 500);
+      onContactSubmit();
+      setTimeout(() => {       
+        handleReset();
+      }, 1000);
+      
     };
    
   return (
@@ -76,3 +75,6 @@ export default function ContactPage() {
       </Container>
   );
 }
+
+
+
