@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/CardifyPro/static/css/main.7d72cf6d.css",
-    "main.js": "/CardifyPro/static/js/main.a22ea24d.js",
+    "main.js": "/CardifyPro/static/js/main.9fd5ba1f.js",
     "static/js/453.df36e3f4.chunk.js": "/CardifyPro/static/js/453.df36e3f4.chunk.js",
     "index.html": "/CardifyPro/index.html",
     "main.7d72cf6d.css.map": "/CardifyPro/static/css/main.7d72cf6d.css.map",
-    "main.a22ea24d.js.map": "/CardifyPro/static/js/main.a22ea24d.js.map",
+    "main.9fd5ba1f.js.map": "/CardifyPro/static/js/main.9fd5ba1f.js.map",
     "453.df36e3f4.chunk.js.map": "/CardifyPro/static/js/453.df36e3f4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7d72cf6d.css",
-    "static/js/main.a22ea24d.js"
+    "static/js/main.9fd5ba1f.js"
   ]
 }
