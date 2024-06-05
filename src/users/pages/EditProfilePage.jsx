@@ -1,3 +1,4 @@
+// Removed redundant import of useMyUser
 import React, { useEffect } from "react";
 import useForm from "../../forms/hooks/useForm";
 import Container from "@mui/material/Container";
@@ -29,17 +30,19 @@ export default function EditProfilePage() {
 
   useEffect(() => {
     if (userId) {
-      getUserData(userId).then((data) => {
-        const modelUser = denormalizeUser(data);
-        setData(modelUser);
-      }).catch((error) => {
-        console.error("Failed to fetch user data:", error);
-      });
+      getUserData(userId)
+        .then((data) => {
+          const modelUser = denormalizeUser(data);
+          setData(modelUser);
+        })
+        .catch((error) => {
+          console.error("Failed to fetch user data:", error);
+        });
     }
   }, [userId, setData]);
 
   if (!user) {
-    return <div>Loading...</div>; 
+    return <div>Loading...</div>;
   }
 
   return (
@@ -49,19 +52,18 @@ export default function EditProfilePage() {
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
-        mt:"68px"
+        mt: "68px",
       }}
     >
       <EditUserForm
         onSubmit={onSubmit}
         onReset={handleReset}
-        validateForm={validateForm()}
+        validateForm={validateForm}
         title={"Change user info"}
         errors={errors}
         data={data}
         onChange={handleChange}
       />
-
     </Container>
   );
 }

@@ -5,7 +5,7 @@ import React from "react";
 
 export default function CardHeaderComponent({ image }) {
 
-  const defaultImage="/CardsTemp.png"
+  const defaultImage="/CardifyPro/CardsTemp.png"
 
   return (
     <CardMedia 

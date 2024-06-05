@@ -4,7 +4,6 @@ import ROUTES from "../../routes/routesModel";
 import Input from "../../forms/components/Input";
 import { Grid } from "@mui/material";
 
-
 export default function EditUserForm({
   onSubmit,
   onReset,
@@ -23,7 +22,7 @@ export default function EditUserForm({
       styles={{ maxWidth: "800px" }}
       to={ROUTES.ROOT}
     >
-      <Grid container spacing={2} sx={{mt:"10px"}}>
+      <Grid container spacing={2} sx={{ mt: "10px" }}>
         <Grid item xs={12} sm={5}>
           <Input
             name="first"
@@ -33,7 +32,6 @@ export default function EditUserForm({
             data={data}
           />
         </Grid>
-        
         <Grid item xs={12} sm={3}>
           <Input
             name="middle"
@@ -44,7 +42,6 @@ export default function EditUserForm({
             required={false}
           />
         </Grid>
-
         <Grid item xs={12} sm={4}>
           <Input
             name="last"
@@ -54,7 +51,6 @@ export default function EditUserForm({
             data={data}
           />
         </Grid>
-
         <Grid item xs={12} sm={3}>
           <Input
             name="phone"
@@ -65,7 +61,6 @@ export default function EditUserForm({
             data={data}
           />
         </Grid>
-
         <Grid item xs={12} sm={9}>
           <Input
             name="url"
@@ -86,7 +81,6 @@ export default function EditUserForm({
             required={false}
           />
         </Grid>
-        
         <Grid item xs={12} sm={5}>
           <Input
             label="Country"
@@ -105,7 +99,7 @@ export default function EditUserForm({
             data={data}
             required={false}
           />
-         </Grid>
+        </Grid>
         <Grid item xs={12} sm={5}>
           <Input
             name="city"
@@ -115,7 +109,6 @@ export default function EditUserForm({
             data={data}
           />
         </Grid>
-
         <Grid item xs={12} sm={6}>
           <Input
             name="street"
@@ -145,9 +138,6 @@ export default function EditUserForm({
             required={false}
           />
         </Grid>
-
-        
-
       </Grid>
     </Form>
   );

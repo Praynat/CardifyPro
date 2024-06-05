@@ -1,21 +1,22 @@
 import MuiMenu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Box from "@mui/material/Box";
+import Divider from "@mui/material/Divider";
 import ROUTES from "../../../../routes/routesModel";
-import { useMyUser} from "../../../../users/providers/UserProvider";
+import { useMyUser } from "../../../../users/providers/UserProvider";
 import MenuLink from "../../../../routes/components/MenuLink";
 import useUsers from "../../../../users/hooks/useUsers";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Menu({ isOpen, anchorEl, onClose }) {
   const { user } = useMyUser();
-  const { handleLogout } =useUsers();
-  const navigate =useNavigate();
+  const { handleLogout } = useUsers();
+  const navigate = useNavigate();
 
   const onLogout = () => {
     handleLogout();
     onClose();
-    navigate(ROUTES.CARDS)
+    navigate(ROUTES.CARDS);
   };
 
   return (
@@ -35,7 +36,7 @@ export default function Menu({ isOpen, anchorEl, onClose }) {
     >
       <Box>
         <MenuLink
-          text="about"
+          text="About"
           navigateTo={ROUTES.ABOUT}
           onClick={onClose}
           styles={{ display: { xs: "block", md: "none" } }}
@@ -44,13 +45,26 @@ export default function Menu({ isOpen, anchorEl, onClose }) {
         {!user && (
           <>
             <MenuLink
-              text="login"
+              text="Home"
+              navigateTo={ROUTES.HOME}
+              onClick={onClose}
+              styles={{ display: { xs: "block", md: "none" } }}
+            />
+            <MenuLink
+              text="Gallery"
+              navigateTo={ROUTES.CARDS}
+              onClick={onClose}
+              styles={{ display: { xs: "block", md: "none" } }}
+            />
+            <Divider />
+            <MenuLink
+              text="Login"
               navigateTo={ROUTES.LOGIN}
               onClick={onClose}
               styles={{ display: { xs: "block", md: "none" } }}
             />
             <MenuLink
-              text="signup"
+              text="Signup"
               navigateTo={ROUTES.SIGNUP}
               onClick={onClose}
               styles={{ display: { xs: "block", md: "none" } }}
@@ -61,12 +75,37 @@ export default function Menu({ isOpen, anchorEl, onClose }) {
         {user && (
           <>
             <MenuLink
-              text="profile"
+              text="Home"
+              navigateTo={ROUTES.HOME}
+              onClick={onClose}
+              styles={{ display: { xs: "block", md: "none" } }}
+            />
+            <MenuLink
+              text="Gallery"
+              navigateTo={ROUTES.CARDS}
+              onClick={onClose}
+              styles={{ display: { xs: "block", md: "none" } }}
+            />
+            <MenuLink
+              text="My Cards"
+              navigateTo={ROUTES.MY_CARDS}
+              onClick={onClose}
+              styles={{ display: { xs: "block", md: "none" } }}
+            />
+            <MenuLink
+              text="Favorites"
+              navigateTo={ROUTES.FAV_CARDS}
+              onClick={onClose}
+              styles={{ display: { xs: "block", md: "none" } }}
+            />
+            <Divider />
+            <MenuLink
+              text="Profile"
               navigateTo={ROUTES.USER_PROFILE}
               onClick={onClose}
             />
             <MenuLink
-              text="edit account"
+              text="Edit Account"
               navigateTo={ROUTES.EDIT_USER}
               onClick={onClose}
             />
