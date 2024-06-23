@@ -8,7 +8,7 @@ With a user-friendly interface and a wide range of customization options, Cardif
 
 1. **Clone the GitHub repository**:
    ```bash
-   git clone URL_TO_YOUR_REPOSITORY CardifyPro
+   git clone URL_TO_THE_REPOSITORY CardifyPro
    cd CardifyPro
    ```
 
@@ -218,5 +218,6 @@ Cela devrait vous permettre de conserver toutes les informations nÃ©cessaires, Ã
 # CardifyPro
 A website to Explore Businesses &amp; Highlight Your Own with Custom Card Creation
 >>>>>>> f803d4988c4e67e86ed2a3d8174378b5f8e507d5
-#   C a r d i f y P r o  
+#   C a r d i f y P r o 
+ 
  
