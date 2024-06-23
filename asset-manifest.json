@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/CardifyPro/static/css/main.7d72cf6d.css",
-    "main.js": "/CardifyPro/static/js/main.3baf435d.js",
-    "static/js/453.df36e3f4.chunk.js": "/CardifyPro/static/js/453.df36e3f4.chunk.js",
-    "index.html": "/CardifyPro/index.html",
-    "main.7d72cf6d.css.map": "/CardifyPro/static/css/main.7d72cf6d.css.map",
-    "main.3baf435d.js.map": "/CardifyPro/static/js/main.3baf435d.js.map",
-    "453.df36e3f4.chunk.js.map": "/CardifyPro/static/js/453.df36e3f4.chunk.js.map"
+    "main.css": "/home/static/css/main.7d72cf6d.css",
+    "main.js": "/home/static/js/main.ce29ecbe.js",
+    "static/js/453.df36e3f4.chunk.js": "/home/static/js/453.df36e3f4.chunk.js",
+    "index.html": "/home/index.html",
+    "main.7d72cf6d.css.map": "/home/static/css/main.7d72cf6d.css.map",
+    "main.ce29ecbe.js.map": "/home/static/js/main.ce29ecbe.js.map",
+    "453.df36e3f4.chunk.js.map": "/home/static/js/453.df36e3f4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7d72cf6d.css",
-    "static/js/main.3baf435d.js"
+    "static/js/main.ce29ecbe.js"
   ]
 }
