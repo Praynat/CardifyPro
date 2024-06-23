@@ -14,6 +14,7 @@ export default function SignupForm({
   errors,
   data,
   onChange,
+  handleCheckboxChange
 }) {
   const { theme } = useDarkLightTheme();
   return (
@@ -32,7 +33,7 @@ export default function SignupForm({
             label="First Name"
             error={errors.first}
             onChange={onChange}
-            data={data}
+        data={data}
           />
         </Grid>
         
@@ -171,7 +172,7 @@ export default function SignupForm({
 
         <Grid item xs={12}>
           <FormControlLabel
-            onChange={onChange}
+            onChange={handleCheckboxChange}
             name="isBusiness"
             control={<Checkbox value={data.isBusiness} color="primary" sx={{color:theme.strongTextColor}}/>}
             label="Signup as business"

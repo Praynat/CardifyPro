@@ -15,7 +15,7 @@ import NavItem from "../../routes/components/NavItem";
 export default function SignupPage() {
   const {handleSignup} = useUsers();
   
-  const { data, errors, handleChange, handleReset, validateForm, onSubmit } =
+  const { data, errors, handleChange,handleCheckboxChange, handleReset, validateForm, onSubmit } =
     useForm(initialSignupForm, signupSchema, handleSignup);
 
   const {user}=useMyUser();
@@ -41,6 +41,7 @@ export default function SignupPage() {
         errors={errors}
         data={data}
         onChange={handleChange}
+        handleCheckboxChange={handleCheckboxChange}
       />
       <Box sx={{display:"flex",gap:"20px", alignItems:"baseline"}}>
           <Typography variant="body" color="white" sx={{fontFamily:"Open-Sans",mt:"10px", fontWeight:"100",fontSize:"20px", color:'#B2B2B2'}}>

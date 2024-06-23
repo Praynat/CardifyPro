@@ -1,4 +1,3 @@
-// Removed redundant import of useMyUser
 import React, { useEffect } from "react";
 import useForm from "../../forms/hooks/useForm";
 import Container from "@mui/material/Container";
@@ -9,6 +8,7 @@ import denormalizeUser from "../helpers/normalization/denormalizeUser";
 import EditUserForm from "../components/EditUserForm";
 import initialEditUserForm from "../helpers/initialForms/initialEditUserForm";
 import editUserSchema from "../models/editUserSchema";
+
 
 export default function EditProfilePage() {
   const { handleUserUpdate } = useUsers();
@@ -24,8 +24,8 @@ export default function EditProfilePage() {
     validateForm,
     onSubmit,
     setData,
-  } = useForm(initialEditUserForm, editUserSchema, (newUser) =>
-    handleUserUpdate(newUser, userId)
+  } = useForm(initialEditUserForm, editUserSchema, (userFromClient) =>
+    handleUserUpdate(userFromClient, userId)
   );
 
   useEffect(() => {
@@ -55,15 +55,19 @@ export default function EditProfilePage() {
         mt: "68px",
       }}
     >
-      <EditUserForm
-        onSubmit={onSubmit}
-        onReset={handleReset}
-        validateForm={validateForm}
-        title={"Change user info"}
-        errors={errors}
-        data={data}
-        onChange={handleChange}
-      />
+      {user ? (
+        <EditUserForm
+          onSubmit={onSubmit}
+          onReset={handleReset}
+          validateForm={validateForm}
+          title={"Change user info"}
+          errors={errors}
+          data={data}
+          onChange={handleChange}
+        />
+      ) : (
+        <div>Error: User data not available.</div>
+      )}
     </Container>
   );
 }

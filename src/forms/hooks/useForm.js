@@ -5,12 +5,13 @@ import { useSnack } from "../../providers/SnackbarProvider";
 export default function useForm(initialForm, schema, handleSubmit) {
   const [data, setData] = useState(initialForm);
   const [errors, setErrors] = useState({});
-  const setSnack = useSnack();
+  const setSnack = useSnack(); 
+
 
   const validateProperty = useCallback((name, value) => {
     const obj = { [name]: value };
-    const generateSchema = Joi.object({ [name]: schema[name] });
-    const { error } = generateSchema.validate(obj);
+    const fieldSchema = Joi.object({ [name]: schema[name] });
+    const { error } = fieldSchema.validate(obj);
     return error ? error.details[0].message : null;
   }, [schema]);
 
@@ -31,6 +32,27 @@ export default function useForm(initialForm, schema, handleSubmit) {
     setData((prev) => ({ ...prev, [name]: value }));
   }, [validateProperty]);
 
+  const handleCheckboxChange = useCallback(
+    (event) => {
+      const name = event.target.name;
+      const value = event.target.checked;
+      const errorMessage = validateProperty(name, value);
+      if (errorMessage) {
+        setErrors((prev) => ({ ...prev, [name]: errorMessage }));
+      } else {
+        setErrors((prev) => {
+          let obj = { ...prev };
+          delete obj[name];
+          return obj;
+        });
+      }
+      setData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    },
+    [validateProperty]
+  );
   const handleReset = useCallback(() => {
     setData(initialForm);
     setErrors({});
@@ -38,8 +60,18 @@ export default function useForm(initialForm, schema, handleSubmit) {
 
  const validateForm = useCallback(() => {
     const schemaForValidate = Joi.object(schema);
-    const { error } = schemaForValidate.validate(data);
-    if (error) return false;
+    const filteredData = Object.keys(data).reduce((acc, key) => {
+      if (schema.hasOwnProperty(key)) {
+        acc[key] = data[key];
+      }
+      return acc;
+    }, {});
+  
+    const { error } = schemaForValidate.validate(filteredData, { abortEarly: false });
+    if (error) {
+      // console.log('Validation errors:', error.details);
+      return false;
+    }
     return true;
   }, [data, schema]);
 
@@ -64,9 +96,10 @@ export default function useForm(initialForm, schema, handleSubmit) {
     errors,
     setData,
     handleChange,
+    handleCheckboxChange,
     handleReset,
     onSubmit,
     validateForm,
     onContactSubmit
-  }), [data, errors, handleChange, handleReset, onSubmit, validateForm,onContactSubmit]);
+  }), [data, errors, handleChange,handleCheckboxChange, handleReset, onSubmit, validateForm,onContactSubmit]);
 }

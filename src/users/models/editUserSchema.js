@@ -1,6 +1,6 @@
-import Joi from "joi";
+import Joi from 'joi';
 
-const editUserSchema = Joi.object({
+const editUserSchema={
   first: Joi.string().min(2).max(256).required(),
   middle: Joi.string().min(2).max(256).allow(""),
   last: Joi.string().min(2).max(256).required(),
@@ -15,12 +15,12 @@ const editUserSchema = Joi.object({
     .message("user image must be a valid url")
     .allow(""),
   alt: Joi.string().min(2).max(256).allow(""),
-  state: Joi.string().allow(""),
   country: Joi.string().min(2).max(256).required(),
+  state: Joi.string().allow(""),
   city: Joi.string().min(2).max(256).required(),
   street: Joi.string().min(2).max(256).required(),
   houseNumber: Joi.number().required(),
   zip: Joi.number(),
-});
+};
 
 export default editUserSchema;
