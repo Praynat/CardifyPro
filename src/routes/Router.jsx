@@ -1,6 +1,5 @@
 import React from 'react';
 import ROUTES from './routesModel';
-import {Routes,Route} from "react-router-dom"
 import CardsPage from '../Cards/Pages/CardsPage';
 import AboutPage from '../Pages/AboutPage';
 import ErrorPage from '../Pages/ErrorPage';
@@ -16,26 +15,27 @@ import SearchPage from '../layout/header/topNavBar/right-navigation/Search/Searc
 import HomePage from '../Pages/HomePage';
 import ProfilePage from '../users/pages/ProfilePage';
 import EditProfilePage from '../users/pages/EditProfilePage';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
-export default function Router() {
+export default function AppRouter() {
   return (
-    <Routes>
-        <Route path={ROUTES.ROOT} element={<HomePage/>}/>
-        <Route path={ROUTES.HOME} element={<HomePage/>}/>
-        <Route path={ROUTES.CARDS} element={<CardsPage/>}/>
-        <Route path={ROUTES.MY_CARDS} element={<MyCardsPage/>}/>
-        <Route path={ROUTES.FAV_CARDS} element={<FavoritesPage/>}/>
-        <Route path={ROUTES.SEARCH_CARDS} element={<SearchPage/>}/>
-        <Route path={ROUTES.USER_PROFILE} element={<ProfilePage/>}/>
-        <Route path={ROUTES.EDIT_USER} element={<EditProfilePage/>}/>
-        <Route path={ROUTES.ABOUT} element={<AboutPage/>}/>
-        <Route path={ROUTES.CONTACT} element={<ContactPage/>}/>
-        <Route path={ROUTES.SIGNUP} element={<SignUpPage/>}/>   
-        <Route path={ROUTES.LOGIN} element={<LoginPage/>}/>    
-        <Route path={ROUTES.CREATE_CARD} element={<AddCardPage/>}/>
+      <Routes>
+        <Route path="/CardifyPro" element={<Navigate to={ROUTES.HOME} />} />
+        <Route path={ROUTES.HOME} element={<HomePage />} />
+        <Route path={ROUTES.CARDS} element={<CardsPage />} />
+        <Route path={ROUTES.MY_CARDS} element={<MyCardsPage />} />
+        <Route path={ROUTES.FAV_CARDS} element={<FavoritesPage />} />
+        <Route path={ROUTES.SEARCH_CARDS} element={<SearchPage />} />
+        <Route path={ROUTES.USER_PROFILE} element={<ProfilePage />} />
+        <Route path={ROUTES.EDIT_USER} element={<EditProfilePage />} />
+        <Route path={ROUTES.ABOUT} element={<AboutPage />} />
+        <Route path={ROUTES.CONTACT} element={<ContactPage />} />
+        <Route path={ROUTES.SIGNUP} element={<SignUpPage />} />
+        <Route path={ROUTES.LOGIN} element={<LoginPage />} />
+        <Route path={ROUTES.CREATE_CARD} element={<AddCardPage />} />
         <Route path={ROUTES.EDIT_CARD + "/:id"} element={<EditCardPage />} />
-        <Route path={ROUTES.CARD_INFO + "/:id"} element={<CardsPageDetails/>}/>
-        <Route path="*" element={<ErrorPage/>}/>
-    </Routes>
-  )
+        <Route path={ROUTES.CARD_INFO + "/:id"} element={<CardsPageDetails />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
+  );
 }

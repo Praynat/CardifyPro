@@ -1,6 +1,5 @@
 import axios from "axios";
-const apiUrl = "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards";
-
+const apiUrl=process.env.REACT_APP_API_URL+"/cards"
 export const getCards = async () => {
   try {
     const response = await axios.get(apiUrl);
@@ -89,7 +88,7 @@ export const editCard = async (cardId, normalaizedCard) => {
 export const changeLikeStatus = async (cardId) => {
   try {
     const { data } = await axios.patch(`${apiUrl}/${cardId}`);
-    return data;
+    return data;      
   } catch (error) {
     return Promise.reject(error.message);
   }

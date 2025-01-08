@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const apiUrl="https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users"
+const apiUrl=process.env.REACT_APP_API_URL+"/users"
 export const login = async(userLogin)=>{
     try {
         const response = await axios.post(apiUrl+"/login",userLogin);

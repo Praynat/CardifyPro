@@ -11,7 +11,7 @@ export default function Logo() {
     <NavBarLink to={ROUTES.HOME}>
 
       <Box sx={{margin:"1rem", display:"flex", alignItems:"center"}}>
-        <IconButton>
+        <IconButton >
               <FiLayers color={theme.strongTextColor}/>
         </IconButton>
 
